@@ -4,6 +4,7 @@ $commentView = new Comment();
 $commentFrom = $commentView->showFromComments($_SESSION["email"]);
 
 if (!EMPTY($commentFrom)){
+  
 for ($row = 0; $row < count($commentFrom); $row++) {
   echo "<div class='card'>
   <div class='card-header'>

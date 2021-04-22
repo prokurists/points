@@ -152,8 +152,8 @@ function toLoginPage (){
         $emailFrom = $_SESSION["email"];
         $comment = $_POST["comment"];
         $value = $_POST["quantity"];
-
-        $newComment->createNewComment($emailTo, $emailFrom, $comment, $value);
+        
+        $newComment->createNewComment($emailFrom, $emailTo, $comment, $value);
 
     }
 

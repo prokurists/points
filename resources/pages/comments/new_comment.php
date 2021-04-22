@@ -23,7 +23,7 @@ if (isset($_SESSION["email"])){
       </select>
       <br>
       <label for="quantity">Points given:</label>
-      <input type="number" id="quantity" name="quantity" min="10" max="<?php echo $userMaxPoints; ?>">
+      <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>">
       <br>
       <label for="comment">Comment:</label>
   <textarea class="form-control" rows="1" name="comment"></textarea>

@@ -1,7 +1,3 @@
-<div class="container center">
-  
-<img src="/resources/style/images/logo.png">
-</div>
 <?php if(!empty($resMessage)) {?>
   <div class='alert w80 <?php echo $resMessage['status']?> alert-dismissible fade show' role='alert'>
   <?php echo $resMessage['message']?>

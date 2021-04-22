@@ -9,8 +9,8 @@ class Comment{
 
         //Inserting into group new group record
 
-        $sqlPlus = "UPDATE users SET gift = gift + '".$value."' WHERE email = '".$emailFrom."'";
-        $sqlMinus = "UPDATE users SET wallet = wallet - '".$value."' WHERE email = '".$emailTo."'";
+        $sqlPlus = "UPDATE users SET gift = gift + '".$value."' WHERE email = '".$emailTo."'";
+        $sqlMinus = "UPDATE users SET wallet = wallet - '".$value."' WHERE email = '".$emailFrom."'";
 
 
         if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
@@ -38,49 +38,35 @@ class Comment{
         $connectQr = $db->connectDB();
         $commentsFrom = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_from = '".$email."'";
-
+        $sql = "SELECT * FROM user_comments WHERE email_to = '".$email."'";
         $result = $connectQr->query($sql);
       
-        if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-  
-        $commentsFrom = array(
-            array($row["comment"], $row["value"])
-        );
-        return $commentsFrom;
-
-
-        } else {
-
-             return false;       
+        if ($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                array_push($commentsFrom, array($row["comment"], $row["value"]));
+            }
         }
-    }    
+        return $commentsFrom;
+}
     
 
     public function showToComments($email){
         
         $db = new dbConnect();
         $connectQr = $db->connectDB();
-        $commentsTo = array();
+        $showToComments = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_to = '".$email."'";
+        $sql = "SELECT * FROM user_comments WHERE email_from = '".$email."'";
 
         $result = $connectQr->query($sql);
       
-        if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-  
-        $commentsTo = array(
-            array($row["comment"], $row["value"])
-        );
-        return $commentsTo;
 
-
-        } else {
-
-             return false;       
+        if ($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                array_push($showToComments, array($row["comment"], $row["value"]));
+            }
         }
-    }    
+        return $showToComments;
+    }
     
 }
