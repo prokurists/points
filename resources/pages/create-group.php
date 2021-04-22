@@ -1,1 +1,0 @@
-<h1>Create group</h1>

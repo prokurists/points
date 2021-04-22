@@ -1,30 +1,42 @@
 <?php
-$request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/' :
         require 'resources/pages/index.php';
         break;
 
-    case '/profile' :
-        require 'resources/pages/profile.php';
-        break;
-
     case '/login' :
         require 'resources/pages/login.php';
         break;
 
-    case '/register' :
-        require 'resources/pages/register.php';
+    case '/group' :
+        require 'resources/pages/group.php';
         break;
 
-    case '/create-group' :
-        require 'resources/pages/create-group.php';
+    case '/new_comment' :
+        require 'resources/pages/comments/new_comment.php';
         break;
 
-    default :
-        require 'resources/pages/404.php';
+    case '/history_comments' :
+        require 'resources/pages/comments/history_comments.php';
         break;
+
+        case '/comments' :
+        require 'resources/pages/comments.php';
+        break;
+
+        case '/logout' :
+            session_unset();
+            header("Refresh: 0; URL=/");
+        break;
+
+        case '/registration' AND $number :
+            require 'resources/pages/register.php';
+            break;
+
+        default :
+            require 'resources/pages/404.php';
+            break;
 }
 
 ?>

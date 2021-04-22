@@ -1,8 +1,26 @@
 body{
-    width:80%;
+    width:100%;
     margin: auto;
+    padding-bottom:5px;
 }
 
 .jumbotron{
     background-color: white;
+}
+
+
+.hide {
+    display:none;
+}
+
+.center{
+  text-align: center;
+}
+.w80
+{
+    width:80%;
+    margin:auto;
+}
+.card{
+    padding:5px;
 }

@@ -1,0 +1,6 @@
+Vizuali
+
+1. Sakārtot navigāciju/Footeri
+2. History/Points from kam aizsutita nauda
+3. Resset gift poga un Resset wallet poga - funkcionalitati pievienot.
+4. Izslegt iespeju radit pašam sevi un sev skaitit naudu.
