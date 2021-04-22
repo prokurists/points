@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card w80">
 <div class="card-body">
-<form method="POST" name="login" class="w80">
+<form method="POST" name="login" class="">
   <div class="form-group">
     <label for="uname">Email adress:</label>
     <input type="text" class="form-control" id="uname" placeholder="Enter email" name="email" required>

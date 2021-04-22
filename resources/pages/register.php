@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card w80">
 <div class="card-body">
-<form method="POST" name="register" class="w80">
+<form method="POST" name="register">
 <div class="form-group">
     <label for="text">Name:</label>
     <input type="text" class="form-control" placeholder="Enter your name and surname" name="name" required>
