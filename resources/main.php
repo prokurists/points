@@ -30,7 +30,7 @@ switch ($request) {
             header("Refresh: 0; URL=/");
         break;
 
-        case '/registration' AND $number :
+        case '/register' AND $number :
             require 'resources/pages/register.php';
             break;
 

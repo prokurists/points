@@ -20,7 +20,7 @@
   <div class="form-group">
 
 <?php 
-if ($number == "/registration") {
+if ($number == "/register") {
   
 ?>     
 <label for="group">Create new Group</label>
