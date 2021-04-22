@@ -11,9 +11,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/register">Register</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
+
       <?php }else{ ?>
         <li class="nav-item">
         <a class="nav-link" href="/history_comments">Transaction History</a>
