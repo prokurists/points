@@ -16,7 +16,7 @@ if (isset($_SESSION["email"])){
     <?php echo $userStartPoints; ?>
   </span></a>
    <div id="startpoints" class="collapse p-15">
-<?php include ("comments/to_comments.php"); ?>
+<?php include ("/comments/to_comments.php"); ?>
   </div></div>
 
   <div class="col">
@@ -25,7 +25,7 @@ if (isset($_SESSION["email"])){
        <?php echo $userGainedPoints; ?>
       </span></a>
      <div id="pointsearned" class="collapse p-15">
-     <?php include ("comments/from_comments.php"); ?>
+     <?php include ("/comments/from_comments.php"); ?>
   </div></div>
 
   </div>
@@ -33,7 +33,7 @@ if (isset($_SESSION["email"])){
 <div class="container">
   <a href="#ratecoworker" class="btn btn-dark btn-block p-15" data-toggle="collapse">Rate your coworker</a>
   <div id="ratecoworker" class="collapse ">
-  <?php include ("comments/new_comment.php"); ?>
+  <?php include ("/comments/new_comment.php"); ?>
   </div></div>
   
 <br>
