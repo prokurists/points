@@ -238,5 +238,22 @@ class User  {
         }
     }
 
+    public function getTopUser($groupName){
+
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+        $topUserArray = array();
+
+        $sql = "SELECT * FROM users WHERE user_group='".$groupName."' ORDER BY gift DESC LIMIT 3";
+        $result = $connectQr->query($sql);
+
+        if ($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)) {
+                array_push($topUserArray, array($row["name"], $row["gift"]));
+            }
+        }
+        return $topUserArray;
+    }
+
 }
 ?> 

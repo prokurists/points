@@ -38,7 +38,7 @@ function toLoginPage (){
           //Creating new session and making redirect to index page
               $_SESSION["loggedIn"] = '1'; 
               $_SESSION["email"] = $email;
-		  	  $_SESSION["groupName"] = $groupName;
+		  	      $_SESSION["groupName"] = $groupName;
               header("Refresh: 1; URL=/");
 
              } else {

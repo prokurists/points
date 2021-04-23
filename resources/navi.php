@@ -19,6 +19,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/new_comment">New Transaction</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/topusers">TOP users</a>
+      </li>
       <?php if(isset($_SESSION["groupMaster"])){?>
       <li class="nav-item">
         <a class="nav-link" href="/group">Group settings</a>

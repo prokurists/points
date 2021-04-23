@@ -25,6 +25,11 @@ switch ($request) {
         require 'resources/pages/comments.php';
         break;
 
+        
+        case '/topusers' :
+            require 'resources/pages/top5users.php';
+            break;
+
         case '/logout' :
             session_unset();
             header("Refresh: 0; URL=/");
