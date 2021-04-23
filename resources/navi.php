@@ -26,7 +26,7 @@
         <?php } ?>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    <span class="badge badge-pill badge-light">Hello, Alex </span><br>
+    <span class="badge badge-pill badge-light">Hello, <?php echo $_SESSION["email"]; ?> </span><br>
     <a class="nav-link" href="/logout"><i class="fa fa-sign-out" style="font-size:20px; color:red; padding-left:2px;"></i></a>
 <?php }?>
 

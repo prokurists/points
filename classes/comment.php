@@ -2,7 +2,7 @@
 
 class Comment{
 
-    public function createNewComment($emailFrom, $emailTo, $comment, $value){
+    public function createNewComment($emailFrom, $emailTo, $comment, $value, $groupName){
 
         $db = new dbConnect();
         $connectQr = $db->connectDB();
@@ -15,8 +15,8 @@ class Comment{
 
         if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
 
-            $sql = "INSERT INTO user_comments (email_from, email_to, comment, value)
-            VALUES ('".$emailFrom."', '".$emailTo."', '".$comment."', '".$value."')";
+            $sql = "INSERT INTO user_comments (email_from, email_to, comment, value, groupName)
+            VALUES ('".$emailFrom."', '".$emailTo."', '".$comment."', '".$value."', '".$groupName."')";
     
                 if (mysqli_query($connectQr, $sql)) {
                     return true;
@@ -43,7 +43,7 @@ class Comment{
       
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                array_push($commentsFrom, array($row["comment"], $row["value"]));
+                array_push($commentsFrom, array($row["comment"], $row["value"], $row["time_created"]));
             }
         }
         return $commentsFrom;
@@ -63,10 +63,23 @@ class Comment{
 
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                array_push($showToComments, array($row["comment"], $row["value"]));
+                array_push($showToComments, array($row["comment"], $row["value"], $row["time_created"]));
             }
         }
         return $showToComments;
     }
+	public function resetComment($adminGroupName){
+		$db = new dbConnect();
+		$connectQr = $db->connectDB();
+		
+		// sql to delete a record
+$sql = "DELETE FROM user_comments WHERE groupName='".$adminGroupName."'";
+
+if ($connectQr->query($sql) === TRUE) {
+return true;
+} else {
+return false;
+}
+	}
     
 }

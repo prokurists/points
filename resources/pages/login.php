@@ -13,7 +13,7 @@
     <div class="valid-feedback">Valid.</div>
     <div class="invalid-feedback">Please fill out this field.</div>
   </div>
-  <button type="submit" name="login" class="btn btn-primary">Submit</button>
-  <a href="/register">Create new account</a>
+  <button type="submit" name="login" class="btn btn-dark">Login</button>
+  <a class="btn btn-dark" href="/register">Create new account</a>
 </form>
 </div></div>

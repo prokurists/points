@@ -1,8 +1,8 @@
 <?php
 
 $request = $_SERVER['REQUEST_URI'];
-$number = @end(explode("?key=",$_SERVER['REQUEST_URI']));
-$pageTitle = "Page name";
+$regKey = @end(explode("?key=",$_SERVER['REQUEST_URI']));
+$pageTitle = "Points system";
 
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
@@ -25,16 +25,20 @@ function toLoginPage (){
            "status" => "alert-success",
            "message" => "You are logged in!");
            $groupMaster = $xgroup->checkGroupMaster($email);
-           $groupName = $xgroup->getAdminGroupName($email);
+           $adminGroupName = $xgroup->getAdminGroupName($email);
+		       $groupName = $xgroup->getGroupNameR($email);
+
+
 
            if ($groupMaster){
               $_SESSION["groupMaster"] = '1';
               $_SESSION["adminEmail"] = $email;
-              $_SESSION["adminGroupName"] = $groupName;}          
+              $_SESSION["adminGroupName"] = $adminGroupName;}          
             
           //Creating new session and making redirect to index page
               $_SESSION["loggedIn"] = '1'; 
               $_SESSION["email"] = $email;
+		  	  $_SESSION["groupName"] = $groupName;
               header("Refresh: 1; URL=/");
 
              } else {
@@ -153,7 +157,7 @@ function toLoginPage (){
         $comment = $_POST["comment"];
         $value = $_POST["quantity"];
         
-        $newComment->createNewComment($emailFrom, $emailTo, $comment, $value);
+        $newComment->createNewComment($emailFrom, $emailTo, $comment, $value, $_SESSION["groupName"]);
 
     }
 
@@ -166,6 +170,11 @@ function toLoginPage (){
       if (isset($_POST["resetGift"]) && ($_SESSION["groupMaster"] == 1) ){
         $xuser = new User();
         $xuser->resetGift($_SESSION["adminGroupName"]);   }
+
+      //Group admin is resseting Gift Value
+      if (isset($_POST["resetComment"]) && ($_SESSION["groupMaster"] == 1) ){
+        $xComment = new Comment();
+        $xComment->resetComment($_SESSION["adminGroupName"]);   }
 
 
   

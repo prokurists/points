@@ -1,13 +1,14 @@
 <?php 
 session_start();
 
-require 'classes/autoload.php';
-require 'core/functions.php';
+require_once 'classes/autoload.php';
+require_once 'core/functions.php';
+
 
 ?>
 
 <!DOCTYPE html>
-<html lang="lv">
+<html>
 <head>
   <title><?php echo $pageTitle;?></title>
   <meta charset="utf-8">

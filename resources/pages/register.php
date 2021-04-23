@@ -20,19 +20,19 @@
   <div class="form-group">
 
 <?php 
-if ($number == "/register") {
+if ($regKey == "/register") {
   
 ?>     
 <label for="group">Create new Group</label>
 <input type="text" class="form-control" placeholder="Create new group" name="groupName" >
 <?php
 } else {   
-  echo "<input type='hidden' class='form-control' placeholder='".$number."' name= 'groupValue' value='".$number."' readonly>";
+  echo "<input type='hidden' class='form-control' placeholder='".$regKey."' name= 'groupValue' value='".$regKey."' readonly>";
 }
 ?>
 </div>
-  <button type="submit" class="btn btn-primary" name="register">Submit</button>
-  <a href="/login">Have account ? Login</a>
+  <button type="submit" class="btn btn-dark" name="register">Submit</button>
+  <a href="/login" class="btn btn-dark">Have account ? Login</a>
 
 </form>
 

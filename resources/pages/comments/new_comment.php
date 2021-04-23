@@ -1,4 +1,4 @@
-<div class="container w80">
+<div class="container">
   <br>
 <?php  
 //Allow to see content only if you are logged in
@@ -28,7 +28,7 @@ if (isset($_SESSION["email"])){
       <label for="comment">Comment:</label>
   <textarea class="form-control" rows="1" name="comment"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" name="new_comment">Submit</button>
+    <button type="submit" class="btn btn-dark" name="new_comment">Submit</button>
 
   </form>
 

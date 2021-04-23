@@ -64,6 +64,26 @@ class Group
         } else {
         return false;        
         }    }
+	
+	    public function getGroupNameR ($email) {
+
+        //New db connection
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        //Selecting name where groupvalue is exual to invitelinkvalue
+        $sql = "SELECT name FROM user_group WHERE email='".$email."'";
+        $result = $connectQr->query($sql);
+        
+        //If we got groupvalue then we are getting groupname
+        if ($result->num_rows > 0) {
+          // output data of each row
+          $row = $result->fetch_assoc();
+          return $row["name"];
+          
+        } else {
+        return false;        
+        }    }
 
 
     //Creating new group 

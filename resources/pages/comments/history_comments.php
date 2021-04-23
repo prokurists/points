@@ -2,9 +2,10 @@
 <?php  
 //Allow to see content only if you are logged in
 if (isset($_SESSION["loggedIn"])){
-    require_once("/from_comments.php");
-    echo "<hr>";
-    require_once("/to_comments.php");
+    echo "<span class='badge badge-secondary'>Transactions recieved: </span>";
+    require __DIR__."/from_comments.php";
+    echo "<hr><span class='badge badge-secondary'>Transactions sent: </span>";
+    require __DIR__."/to_comments.php";
 
 ?>
 </div>

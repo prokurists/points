@@ -2,11 +2,11 @@
 
 switch ($request) {
     case '/' :
-        require 'resources/pages/index.php';
+        require  'resources/pages/index.php';
         break;
 
     case '/login' :
-        require 'resources/pages/login.php';
+        require  'resources/pages/login.php';
         break;
 
     case '/group' :
@@ -18,7 +18,7 @@ switch ($request) {
         break;
 
     case '/history_comments' :
-        require 'resources/pages/comments/history_comments.php';
+        require  'resources/pages/comments/history_comments.php';
         break;
 
         case '/comments' :
@@ -30,12 +30,12 @@ switch ($request) {
             header("Refresh: 0; URL=/");
         break;
 
-        case '/register' AND $number :
+        case '/register' AND $regKey :
             require 'resources/pages/register.php';
             break;
 
         default :
-            require 'resources/pages/404.php';
+            require  'resources/pages/404.php';
             break;
 }
 

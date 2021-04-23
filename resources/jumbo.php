@@ -5,5 +5,6 @@
     <span aria-hidden='true'>&times;</span>
   </button>
 </div>
-    <?php }?>
-  </div>
+</div>
+
+<?php } ?>
