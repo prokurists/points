@@ -6,7 +6,7 @@ $commentToCounter = count($commentTo);
 $commentToRow = 3;
 
 if ($commentToCounter < 3){
-  $commentTo = $commentToCounter;
+  $commentToRow = $commentToCounter;
 }
 
 if (!EMPTY($commentTo)){
