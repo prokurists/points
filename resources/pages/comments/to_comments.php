@@ -5,6 +5,10 @@ $commentTo = $commentView->showToComments($_SESSION["email"]);
 $commentToCounter = count($commentTo);
 $commentToRow = 3;
 
+if ($commentToCounter < 3){
+  $commentTo = $commentToCounter;
+}
+
 if (!EMPTY($commentTo)){
 for ($row = 0; $row < $commentToRow; $row++) {
   echo "<div class='card'>
