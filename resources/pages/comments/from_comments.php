@@ -5,6 +5,10 @@ $commentFrom = $commentView->showFromComments($_SESSION["email"]);
 $commentFromCounter = count($commentFrom);
 $commentFromRow = 3;
 
+if ($commentFromCounter < 3){
+  $commentFrom = $commentFromCounter;
+}
+
 if (!EMPTY($commentFrom)){
   
 for ($row = 0; $row < $commentFromRow; $row++) {
