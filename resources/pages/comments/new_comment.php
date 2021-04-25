@@ -1,5 +1,4 @@
-<div class="container">
-  <br>
+
 <?php  
 //Allow to see content only if you are logged in
 if (isset($_SESSION["email"])){
@@ -34,7 +33,7 @@ if (isset($_SESSION["email"])){
 
 
   </div>
-  </div></div></div>
+  </div>
 
 <?php 
 } else {
