@@ -28,7 +28,10 @@ class User  {
 
         } else {
         return false;
-        }  }
+        }  
+        $db->closeDB();
+
+    }
    
     //User INSERT (Registration) in database
     public function createUser($name, $email, $password, $groupName){
@@ -57,6 +60,7 @@ class User  {
 
                 return false;
             }
+            $db->closeDB();
 
             
 }
@@ -99,6 +103,8 @@ class User  {
         } else {
             return false;
         }
+        $db->closeDB();
+
     }
 
     public function userStartingPoints(){
@@ -113,7 +119,11 @@ class User  {
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 return $row["wallet"];
-    }}}
+    }
+}
+$db->closeDB();
+
+}
 
 
     public function userGainedPoints(){
@@ -128,7 +138,11 @@ class User  {
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 return $row["gift"];
-    }}}
+    }
+}
+$db->closeDB();
+
+}
 
     public function userGroupName(){
         $db = new dbConnect();
@@ -142,7 +156,12 @@ class User  {
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 return $row["user_group"];
-    }}}
+    
+            }
+        }
+        $db->closeDB();
+
+}
 
 
 
@@ -163,6 +182,8 @@ class User  {
                 }
             }
             return $arrayOptions;
+            $db->closeDB();
+
     }
     public function getUserName($value){
         $db = new dbConnect();
@@ -196,6 +217,8 @@ class User  {
  
         }
         return $value; 
+        $db->closeDB();
+
     }
 
     public function showWalletAmount(){
@@ -210,6 +233,8 @@ class User  {
             $row = $result->fetch_assoc();
             return (trim($row["wallet"]));
         }
+        $db->closeDB();
+
     }
 
     public function resetWallet($groupName){
@@ -223,6 +248,8 @@ class User  {
         } else {
             return false;
         }
+        $db->closeDB();
+
     }
 
     public function resetGift($groupName){
@@ -236,6 +263,8 @@ class User  {
         } else {
             return false;
         }
+        $db->closeDB();
+
     }
 
     public function getTopUser($groupName){
@@ -253,6 +282,8 @@ class User  {
             }
         }
         return $topUserArray;
+        $db->closeDB();
+
     }
 
     public function setUsersWalletGift($emailFrom, $emailTo, $value){
@@ -268,6 +299,8 @@ class User  {
         } else {
                 return false;
             }
+            $db->closeDB();
+
     }
 
     public function addUsersWalletGift($emailFrom, $emailTo, $value){
@@ -283,6 +316,8 @@ class User  {
         } else {
                 return false;
             }
+            $db->closeDB();
+
     }
 
 }

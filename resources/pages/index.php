@@ -1,6 +1,6 @@
 <?php 
 if(isset($_SESSION['loggedIn'])){
-require "comments.php";
+require "transactions.php";
 ?>
 
 <?php }else{ require "login.php";} ?>

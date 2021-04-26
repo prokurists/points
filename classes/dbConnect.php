@@ -19,4 +19,7 @@
         
         }
 //kaut kad jaaiztaisa pieslegšanās
+        function closeDB(){
+          $mysqli -> close();
+        }
     }

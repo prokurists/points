@@ -19,7 +19,10 @@ class Group
         } else {
 
         return false;       
-        }    }    
+        } 
+        $db->closeDB();
+
+      }    
 
 
     //If we got invite link(groupvalue) then we are getting groupname
@@ -42,7 +45,9 @@ class Group
           
         } else {
         return false;        
-        }    }
+        }   
+        $db->closeDB();
+      }
 
             //If we got invite link(groupvalue) then we are getting groupname
     public function getAdminGroupName ($email) {
@@ -63,7 +68,9 @@ class Group
           
         } else {
         return false;        
-        }    }
+        }            
+         $db->closeDB();
+      }
 	
 	    public function getGroupNameR ($email) {
 
@@ -83,7 +90,9 @@ class Group
           
         } else {
         return false;        
-        }    }
+        }
+        $db->closeDB();
+      }
 
 
     //Creating new group 
@@ -103,7 +112,9 @@ class Group
               } else {
 
                 return false;
-            }
+            }           
+             $db->closeDB();
+
     }
 
     //Inserting new record to existing group
@@ -124,6 +135,7 @@ class Group
 
                 return false;
             }
+            $db->closeDB();
 
     }
 
@@ -142,7 +154,8 @@ class Group
         }
 
         return $val;
-        
+        $db->closeDB();
+
     }
 
     public function checkGroupMaster ($email){
@@ -162,7 +175,9 @@ class Group
         } else {
 
         return false;       
-        }    }
+        }   
+        $db->closeDB();
+      }
 
     //Check if DB have any record with concrete dbvalue if not then false
     public function checkGroupValueExistance($groupValue){
@@ -180,9 +195,9 @@ class Group
 
         return false;       
         }    
-
-
+        $db->closeDB();
     }
+
     public function getGroupExValue($value){
       $db = new dbConnect();
       $connectQr = $db->connectDB();
@@ -199,8 +214,7 @@ class Group
 
       return false;       
       }    
-
-
+            $db->closeDB();
   }
 
   public function showGroupUsersList(){
@@ -220,6 +234,7 @@ class Group
            
       }
       return $usersList;
+      $db->closeDB();
 
     }
   }
@@ -245,7 +260,9 @@ class Group
       }
     } else {
       return false;
-    }
+    }      
+          $db->closeDB();
+
   }
 
   public function showGroupResults($email){
@@ -262,7 +279,10 @@ class Group
     } else {
       return false;
     }
+    $db->closeDB();
+
   }
+  
 
 }
 

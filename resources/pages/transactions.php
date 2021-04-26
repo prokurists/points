@@ -9,9 +9,9 @@ if (isset($_SESSION["email"])){
 ?>
 
 
-<?php require "comments/new_comment.php"; ?>
+<?php require "transactions/transaction.php"; ?>
 
-<?php require "comments/to_comments.php"; ?>
+<?php require "transactions/transaction_made.php"; ?>
 <br>
 
 

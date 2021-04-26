@@ -9,25 +9,25 @@ switch ($request) {
         require  'resources/pages/login.php';
         break;
 
-    case '/group' :
+    case '/group_settings' :
         require 'resources/pages/group.php';
         break;
 
-    case '/new_comment' :
-        require 'resources/pages/comments/new_comment.php';
+    case '/transaction' :
+        require 'resources/pages/transactions/transaction.php';
         break;
 
     case '/transaction_history' :
-        require  'resources/pages/comments/to_comments.php';
+        require  'resources/pages/transactions/transaction_history.php';
         break;
 
         case '/comments' :
-        require 'resources/pages/comments.php';
+        require 'resources/pages/transactions.php';
         break;
 
         
-        case '/topusers' :
-            require 'resources/pages/top5users.php';
+        case '/statistics' :
+            require 'resources/pages/statistics.php';
             break;
 
         case '/logout' :

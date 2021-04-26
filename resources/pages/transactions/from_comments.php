@@ -2,7 +2,7 @@
 
 <?php
 $commentView = new Comment();
-$commentFrom = $commentView->showFromComments($_SESSION["email"]);
+$commentFrom = $commentView->showFromComments($_SESSION["email"], $currentMonth);
 $commentFromCounter = count($commentFrom);
 $commentFromRow = 3;
 

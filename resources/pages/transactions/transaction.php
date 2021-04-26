@@ -13,7 +13,7 @@ if (isset($_SESSION["email"])){
 ?>
 <div class="card">
 <div class="card-body">
-<form action="/comments" method="POST" name="new_comment">
+<form action="/transaction" method="POST">
     <div class="form-group">
       <label for="sel1">Select coworker:</label>
       <select class="form-control" id="sel1" name="emailto">
@@ -28,7 +28,7 @@ if (isset($_SESSION["email"])){
       <label for="comment">Comment:</label>
   <textarea class="form-control" rows="1" name="comment"></textarea>
     </div>
-    <button type="submit" class="btn btn-dark" name="new_comment">Submit</button>
+    <button type="submit" class="btn btn-dark" name="new_transaction">Submit</button>
 
   </form>
 

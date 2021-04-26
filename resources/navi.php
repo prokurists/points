@@ -17,14 +17,14 @@
         <a class="nav-link" href="/transaction_history">Transaction History</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/new_comment">New Transaction</a>
+        <a class="nav-link" href="/transaction">New Transaction</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/topusers">TOP users</a>
+        <a class="nav-link" href="/statistics">TOP users</a>
       </li>
       <?php if(isset($_SESSION["groupMaster"])){?>
       <li class="nav-item">
-        <a class="nav-link" href="/group">Group settings</a>
+        <a class="nav-link" href="/group_settings">Group settings</a>
       </li>
         <?php } ?>
     </ul>

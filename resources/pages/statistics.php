@@ -38,7 +38,7 @@
 }
 if (isset($_SESSION["groupMaster"])){
   echo "<div class='col'>
-  <form action='/topusers' method='POST'>
+  <form action='/statistics' method='POST'>
   <button type='submit' class='btn btn-dark btn-block' name='showGroupResults'>Show/Hide Group Results</button>
   </form>   ";}
 ?>

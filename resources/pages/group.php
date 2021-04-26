@@ -56,7 +56,7 @@ for ($row = 0; $row < count($usersList); $row++) {
 
     <input type="text" name="linkreg" class="form-control form-control" value="<?php echo $_SERVER['HTTP_HOST']."/register?key=". $linkReg; ?>">
     <hr>
-    <form action="/group" method="POST" name="setWallet">
+    <form action="/group_settings" method="POST" name="setWallet">
   <label for="quantity">Your group wallet value:</label>
   <input type="number" id="quantity" value="<?php echo $vall; ?>" name="quantity" min="10" max="100">
   <input type="submit" class="btn btn-dark" value="setWallet" name="setWallet">
@@ -66,18 +66,18 @@ for ($row = 0; $row < count($usersList); $row++) {
 
 
 <div class="col">
-<form action="/group" method="POST">
+<form action="/group_settings" method="POST">
 <button type="submit" class="btn btn-dark btn-block" name="resetGift">Reset gift</button>
 </form>
 </div>
 
 <div class="col">
-<form action="/group" method="POST">
+<form action="/group_settings" method="POST">
 <button type="submit" class="btn btn-dark btn-block" name="resetWallet">Reset wallet</button>
 </form>
 </div>
 <div class="col">
-<form action="/group" method="POST">
+<form action="/group_settings" method="POST">
 <button type="submit" class="btn btn-dark btn-block" name="resetComment">Reset comments</button>
 </form>
 

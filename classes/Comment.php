@@ -14,6 +14,11 @@ class Comment{
 
        if ($addUserAmount) {
 
+        $emailFrom = $this->test_input($emailFrom);
+        $emailTo = $this->test_input($emailTo);
+        $comment = $this->test_input($comment);
+
+
             $sql = "INSERT INTO user_comments (email_from, email_to, comment, value, groupName)
             VALUES ('".$emailFrom."', '".$emailTo."', '".$comment."', '".$value."', '".$groupName."')";
     
@@ -25,15 +30,23 @@ class Comment{
                     return false;
                 }
             }
+            $db->closeDB();
     }
 
-    public function showFromComments($email){
+    public function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+
+    public function showFromComments($email, $currentMonth){
         
         $db = new dbConnect();
         $connectQr = $db->connectDB();
         $commentsFrom = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_to = '".$email."'";
+        $sql = "SELECT * FROM user_comments WHERE email_to = '".$email."' AND time_created = '".$currentMonth."'";
         $result = $connectQr->query($sql);
       
         if ($result->num_rows > 0){
@@ -42,16 +55,18 @@ class Comment{
             }
         }
         return $commentsFrom;
+        $db->closeDB();
+
 }
     
 
-    public function showToComments($email){
+    public function showToComments($email, $currentMonth){
         
         $db = new dbConnect();
         $connectQr = $db->connectDB();
         $showToComments = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_from = '".$email."'";
+        $sql = "SELECT * FROM user_comments WHERE email_from = '".$email."' AND MONTH(time_created) = '".$currentMonth."'";
 
         $result = $connectQr->query($sql);
       
@@ -62,6 +77,8 @@ class Comment{
             }
         }
         return $showToComments;
+        $db->closeDB();
+
     }
 	public function resetComment($adminGroupName){
 		$db = new dbConnect();
@@ -75,6 +92,8 @@ class Comment{
         } else {
         return false;
             }
+            $db->closeDB();
+
 	}
 
     public function deleteComment($commentID){
@@ -103,6 +122,8 @@ class Comment{
                 array_push($commentArray, $row["comment"]);
             }
         }            return $commentArray;
+        $db->closeDB();
+
 
     }
     

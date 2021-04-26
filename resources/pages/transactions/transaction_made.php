@@ -3,7 +3,7 @@
 
 <?php
 $commentView = new Comment();
-$commentTo = $commentView->showToComments($_SESSION["email"]);
+$commentTo = $commentView->showToComments($_SESSION["email"], $currentMonth);
 $commentToCounter = count($commentTo);
 $commentToRow = 3;
 

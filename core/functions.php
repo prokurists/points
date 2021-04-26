@@ -4,6 +4,14 @@ $request = $_SERVER['REQUEST_URI'];
 $regKey = @end(explode("?key=",$_SERVER['REQUEST_URI']));
 $pageTitle = "Points system";
 
+if(isset($_SESSION["month"])){
+  $currentMonth = $_SESSION["month"];
+  echo $currentMonth;
+} else{
+  $currentMonth = date('m');
+  echo $currentMonth;
+}
+
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
 
@@ -149,7 +157,7 @@ function toLoginPage (){
         $xuser->setWallet($quantity, $_SESSION["adminGroupName"]); }
       
       //If you are logged you are adding new comment
-      if(isset($_POST["new_comment"]) && ($_SESSION["loggedIn"] == 1)){
+      if(isset($_POST["new_transaction"]) && ($_SESSION["loggedIn"] == 1)){
         $newComment = new Comment();
 
         $emailTo = $_POST["emailto"];
@@ -196,6 +204,12 @@ function toLoginPage (){
       if (isset($_SESSION["groupMaster"]) && (isset($_POST["showGroupResults"]))){
         $setGroupResults = new Group();
         $setGroupResults->setGroupResults($_SESSION["email"]);
+      }
+
+      if(isset($_SESSION["email"]) && (isset($_POST["setMonth"]))){
+        $_SESSION["month"] = $_POST["choosenMonth"];
+        echo $_SESSION["month"];
+        header("Refresh:0; URL=/transaction_history");
       }
       
 
