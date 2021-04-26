@@ -223,5 +223,46 @@ class Group
 
     }
   }
+
+  public function setGroupResults($email){
+    $db = new dbConnect();
+    $connectQr = $db->connectDB();
+
+    $sql = "SELECT showResults FROM user_group WHERE admin='".$email."'"; 
+    $result = $connectQr->query($sql);
+
+    if($result->num_rows > 0){
+      while($row = $result->fetch_assoc()){
+        if ($row["showResults"] === '0'){
+          $sql2 = "UPDATE user_group SET showResults='1' WHERE admin='".$email."'";
+          if ($connectQr->query($sql2) === TRUE) {
+            return true;}
+           } else {
+            $sql3 = "UPDATE user_group SET showResults='0' WHERE admin='".$email."'";
+            if ($connectQr->query($sql3) === TRUE) {
+              return true;}
+          }
+      }
+    } else {
+      return false;
+    }
+  }
+
+  public function showGroupResults($email){
+    $db = new dbConnect();
+    $connectQr = $db->connectDB();
+
+    $sql = "SELECT showResults FROM user_group WHERE admin='".$email."'"; 
+    $result = $connectQr->query($sql);
+    
+    if($result->num_rows > 0){
+      while($row = $result->fetch_assoc()){
+        return $row["showResults"];
+          }
+    } else {
+      return false;
+    }
+  }
+
 }
 

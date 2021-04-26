@@ -1,3 +1,4 @@
+<div class="container w80">
 
 <?php  
 //Allow to see content only if you are logged in
@@ -34,7 +35,7 @@ if (isset($_SESSION["email"])){
 
   </div>
   </div>
-
+  </div>
 <?php 
 } else {
   toLoginPage();

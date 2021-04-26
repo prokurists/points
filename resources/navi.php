@@ -14,7 +14,7 @@
 
       <?php }else{ ?>
         <li class="nav-item">
-        <a class="nav-link" href="/history_comments">Transaction History</a>
+        <a class="nav-link" href="/transaction_history">Transaction History</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/new_comment">New Transaction</a>

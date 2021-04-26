@@ -244,15 +244,45 @@ class User  {
         $connectQr = $db->connectDB();
         $topUserArray = array();
 
-        $sql = "SELECT * FROM users WHERE user_group='".$groupName."' ORDER BY gift DESC LIMIT 3";
+        $sql = "SELECT * FROM users WHERE user_group='".$groupName."' ORDER BY gift DESC";
         $result = $connectQr->query($sql);
 
         if ($result->num_rows > 0){
             while($row = mysqli_fetch_assoc($result)) {
-                array_push($topUserArray, array($row["name"], $row["gift"]));
+                array_push($topUserArray, array($row["name"], $row["gift"], $row["email"]));
             }
         }
         return $topUserArray;
+    }
+
+    public function setUsersWalletGift($emailFrom, $emailTo, $value){
+
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        $sqlPlus = "UPDATE users SET wallet = wallet + '".$value."' WHERE email = '".$emailFrom."'";
+        $sqlMinus = "UPDATE users SET gift = gift - '".$value."' WHERE email = '".$emailTo."'";
+
+        if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
+            return true;
+        } else {
+                return false;
+            }
+    }
+
+    public function addUsersWalletGift($emailFrom, $emailTo, $value){
+
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        $sqlPlus = "UPDATE users SET wallet = wallet - '".$value."' WHERE email = '".$emailFrom."'";
+        $sqlMinus = "UPDATE users SET gift = gift + '".$value."' WHERE email = '".$emailTo."'";
+
+        if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
+            return true;
+        } else {
+                return false;
+            }
     }
 
 }

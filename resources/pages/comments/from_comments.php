@@ -1,4 +1,5 @@
-<br>
+<br><div class="container w80">
+
 <?php
 $commentView = new Comment();
 $commentFrom = $commentView->showFromComments($_SESSION["email"]);
@@ -10,7 +11,8 @@ if ($commentFromCounter < 3){
 }
 
 if (!EMPTY($commentFrom)){
-  
+  echo "<span class='badge badge-secondary'>Transactions recieved: </span>";
+
 for ($row = 0; $row < $commentFromRow; $row++) {
   echo "<div class='card'>
   <div class='card-header'>
@@ -56,4 +58,4 @@ echo "
   </div>
 </div>";
 }
-?>
+?></div>

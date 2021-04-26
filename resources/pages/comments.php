@@ -9,11 +9,9 @@ if (isset($_SESSION["email"])){
 ?>
 
 
-<div class="container w80">
 <?php require "comments/new_comment.php"; ?>
 
 <?php require "comments/to_comments.php"; ?>
-</div>
 <br>
 
 

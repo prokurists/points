@@ -176,6 +176,29 @@ function toLoginPage (){
         $xComment = new Comment();
         $xComment->resetComment($_SESSION["adminGroupName"]);   }
 
+      if (isset($_POST["deleteComment"]) && (isset($_SESSION["email"]))){
+        $xComment = new Comment();
+        $commentID = $_POST["deleteCommentID"];
+
+        $xComment->deleteComment($commentID);
+
+        $commentAmount = $_POST["commentAmount"];
+        $emailFrom = $_SESSION["email"];
+        $emailTo = $_POST["emailTo"];
+
+        $xUser = new User();
+
+
+        $xUser->setUsersWalletGift($emailFrom, $emailTo, $commentAmount);
+
+      }
+      
+      if (isset($_SESSION["groupMaster"]) && (isset($_POST["showGroupResults"]))){
+        $setGroupResults = new Group();
+        $setGroupResults->setGroupResults($_SESSION["email"]);
+      }
+      
+
 
   
     ?>

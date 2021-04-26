@@ -17,8 +17,8 @@ switch ($request) {
         require 'resources/pages/comments/new_comment.php';
         break;
 
-    case '/history_comments' :
-        require  'resources/pages/comments/history_comments.php';
+    case '/transaction_history' :
+        require  'resources/pages/comments/to_comments.php';
         break;
 
         case '/comments' :

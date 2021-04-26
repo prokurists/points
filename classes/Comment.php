@@ -9,11 +9,10 @@ class Comment{
 
         //Inserting into group new group record
 
-        $sqlPlus = "UPDATE users SET gift = gift + '".$value."' WHERE email = '".$emailTo."'";
-        $sqlMinus = "UPDATE users SET wallet = wallet - '".$value."' WHERE email = '".$emailFrom."'";
+        $xUser = new User();
+        $addUserAmount = $xUser->addUsersWalletGift($emailFrom,$emailTo, $value);
 
-
-        if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
+       if ($addUserAmount) {
 
             $sql = "INSERT INTO user_comments (email_from, email_to, comment, value, groupName)
             VALUES ('".$emailFrom."', '".$emailTo."', '".$comment."', '".$value."', '".$groupName."')";
@@ -25,11 +24,7 @@ class Comment{
     
                     return false;
                 }
-        
-
-
-    }
-
+            }
     }
 
     public function showFromComments($email){
@@ -63,7 +58,7 @@ class Comment{
 
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                array_push($showToComments, array($row["comment"], $row["value"], $row["time_created"]));
+                array_push($showToComments, array($row["comment"], $row["value"], $row["time_created"], $row["email_to"], $row["id"]));
             }
         }
         return $showToComments;
@@ -73,13 +68,42 @@ class Comment{
 		$connectQr = $db->connectDB();
 		
 		// sql to delete a record
-$sql = "DELETE FROM user_comments WHERE groupName='".$adminGroupName."'";
+        $sql = "DELETE FROM user_comments WHERE groupName='".$adminGroupName."'";
 
-if ($connectQr->query($sql) === TRUE) {
-return true;
-} else {
-return false;
-}
+        if ($connectQr->query($sql) === TRUE) {
+        return true;
+        } else {
+        return false;
+            }
 	}
+
+    public function deleteComment($commentID){
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        $sql = "DELETE FROM user_comments WHERE id='".$commentID."'";
+
+        if($connectQr->query($sql) === TRUE){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    public function getTopUserComments($emailTo){
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+        $commentArray = array();
+
+        $sql = "SELECT * FROM user_comments WHERE email_to = '".$emailTo."'";
+        $result = $connectQr->query($sql);
+
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                array_push($commentArray, $row["comment"]);
+            }
+        }            return $commentArray;
+
+    }
     
 }

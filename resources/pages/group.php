@@ -76,10 +76,14 @@ for ($row = 0; $row < count($usersList); $row++) {
 <button type="submit" class="btn btn-dark btn-block" name="resetWallet">Reset wallet</button>
 </form>
 </div>
-	<div class="col">
+<div class="col">
 <form action="/group" method="POST">
 <button type="submit" class="btn btn-dark btn-block" name="resetComment">Reset comments</button>
 </form>
+
+
+
+
 </div>
 </div>
 </div>

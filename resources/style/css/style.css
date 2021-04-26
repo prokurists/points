@@ -24,3 +24,7 @@ body{
 .card{
    padding:2px;
 }
+
+.list-group-item{
+    font-size: 4px;
+}
