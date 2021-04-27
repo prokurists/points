@@ -5,12 +5,11 @@ $regKey = @end(explode("?key=",$_SERVER['REQUEST_URI']));
 $pageTitle = "Points system";
 
 if(isset($_SESSION["month"])){
-  $currentMonth = $_SESSION["month"];
-  echo $currentMonth;
+  $monthChoosen = $_SESSION["month"];
 } else{
-  $currentMonth = date('m');
-  echo $currentMonth;
+  $monthChoosen = date('Y-m');
 }
+$currentMonth = date('Y-m');
 
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
@@ -207,8 +206,7 @@ function toLoginPage (){
       }
 
       if(isset($_SESSION["email"]) && (isset($_POST["setMonth"]))){
-        $_SESSION["month"] = $_POST["choosenMonth"];
-        echo $_SESSION["month"];
+        $_SESSION["month"] = $_POST["monthChoosen"];
         header("Refresh:0; URL=/transaction_history");
       }
       

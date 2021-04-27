@@ -17,7 +17,7 @@
 
   for ($row = 0; $row < count($usersList); $row++) {
 
-      $commentUsersList = $topUsersComments->getTopUserComments($usersList[$row][2]);
+      $commentUsersList = $topUsersComments->getTopUserComments($usersList[$row][2], $currentMonth);
 
 
       echo "

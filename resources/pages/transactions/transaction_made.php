@@ -1,11 +1,6 @@
 <br>
-<div class="container w80">
 
 <?php
-$commentView = new Comment();
-$commentTo = $commentView->showToComments($_SESSION["email"], $currentMonth);
-$commentToCounter = count($commentTo);
-$commentToRow = 3;
 
 if ($commentToCounter < 3){
   $commentToRow = $commentToCounter;
@@ -68,11 +63,9 @@ if ($commentToCounter > 3){
   <div class='card-header'>
   </div>
   <div class='card-body'>
-      <p>You haven't rated anyone yet</p>
-      <a href='/new_comment' class='btn btn-dark'>Rate now</a>
+      <p>No rates at this month.</p>
   </div>
 </div>";
 
 }
 ?>
-</div>

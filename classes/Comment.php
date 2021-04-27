@@ -40,15 +40,15 @@ class Comment{
         return $data;
       }
 
-    public function showFromComments($email, $currentMonth){
+    public function showFromComments($email, $monthChoosen){
         
         $db = new dbConnect();
         $connectQr = $db->connectDB();
         $commentsFrom = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_to = '".$email."' AND time_created = '".$currentMonth."'";
+        $sql = "SELECT * FROM user_comments WHERE email_to = '".$email."' AND DATE_FORMAT(time_created, '%Y-%m') = '".$monthChoosen."'";
         $result = $connectQr->query($sql);
-      
+
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 array_push($commentsFrom, array($row["comment"], $row["value"], $row["time_created"]));
@@ -66,8 +66,7 @@ class Comment{
         $connectQr = $db->connectDB();
         $showToComments = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_from = '".$email."' AND MONTH(time_created) = '".$currentMonth."'";
-
+        $sql = "SELECT * FROM user_comments WHERE email_from = '".$email."' AND DATE_FORMAT(time_created, '%Y-%m') = '".$currentMonth."'";
         $result = $connectQr->query($sql);
       
 
@@ -109,12 +108,12 @@ class Comment{
         }
     }
 
-    public function getTopUserComments($emailTo){
+    public function getTopUserComments($emailTo, $currentMonth){
         $db = new dbConnect();
         $connectQr = $db->connectDB();
         $commentArray = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_to = '".$emailTo."'";
+        $sql = "SELECT * FROM user_comments WHERE email_to = '".$emailTo."' AND DATE_FORMAT(time_created, '%Y-%m') = '".$currentMonth."'";
         $result = $connectQr->query($sql);
 
         if($result->num_rows > 0){

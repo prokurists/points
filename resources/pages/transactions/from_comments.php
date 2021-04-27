@@ -1,10 +1,7 @@
 <br><div class="container w80">
 
 <?php
-$commentView = new Comment();
-$commentFrom = $commentView->showFromComments($_SESSION["email"], $currentMonth);
-$commentFromCounter = count($commentFrom);
-$commentFromRow = 3;
+
 
 if ($commentFromCounter < 3){
   $commentFrom = $commentFromCounter;
@@ -29,7 +26,7 @@ for ($row = 0; $row < $commentFromRow; $row++) {
 <br>";
 }
 
-for ($row = 3; $row < count($commentFrom); $row++) {
+for ($row = 3; $row < $commentFrom; $row++) {
   echo "<div id='showMoreFrom' class='collapse p-15'><div class='card'>
   <div class='card-header'>
 

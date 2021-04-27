@@ -1,5 +1,3 @@
-<div class="container w80">
-
 <?php  
 //Allow to see content only if you are logged in
 if (isset($_SESSION["email"])){
@@ -9,6 +7,7 @@ if (isset($_SESSION["email"])){
 
     $users = $userView->getAllUsersOption();
     $userMaxPoints = $userView->userStartingPoints();
+    
     
 ?>
 <div class="card">
@@ -24,6 +23,8 @@ if (isset($_SESSION["email"])){
       <br>
       <label for="quantity">Points given:</label>
       <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>">
+      <span class="badge badge-warning">Points left <?php echo $userMaxPoints; ?></span>
+
       <br>
       <label for="comment">Comment:</label>
   <textarea class="form-control" rows="1" name="comment"></textarea>
@@ -33,7 +34,6 @@ if (isset($_SESSION["email"])){
   </form>
 
 
-  </div>
   </div>
   </div>
 <?php 
