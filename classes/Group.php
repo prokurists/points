@@ -2,26 +2,25 @@
 
 class Group
 {
+
+
     //Checking if groupname is avaiable
-    public function checkGroupAvailability($groupname){
+    public function checkGroupAvailability($groupName){
 
         //New connection
         $db = new dbConnect();
         $connectQr = $db->connectDB();
 
         //Trying to find groupname indb
-        $sql = "SELECT * FROM user_group WHERE name='".$groupname."'";
+        $sql = "SELECT * FROM user_group WHERE name='".$groupName."'";
         $result = $connectQr->query($sql);
         
         if ($result->num_rows == 0) {
-
         return true;          
         } else {
-
         return false;       
         } 
         $db->closeDB();
-
       }    
 
 
@@ -41,13 +40,12 @@ class Group
           // output data of each row
           $row = $result->fetch_assoc();
           $groupName = $row["name"];
-          return $groupName;           
-          
-        } else {
-        return false;        
-        }   
-        $db->closeDB();
-      }
+          return $groupName;      
+          } else {
+          return false;        
+          }   
+          $db->closeDB();
+        }
 
             //If we got invite link(groupvalue) then we are getting groupname
     public function getAdminGroupName ($email) {
@@ -64,15 +62,14 @@ class Group
         if ($result->num_rows > 0) {
           // output data of each row
           $row = $result->fetch_assoc();
-          return $row["name"];
-          
-        } else {
-        return false;        
-        }            
-         $db->closeDB();
-      }
+          return $row["name"];          
+            } else {
+            return false;        
+            }            
+            $db->closeDB();
+          }
 	
-	    public function getGroupNameR ($email) {
+	    public function getGroupNameForSession ($email) {
 
         //New db connection
         $db = new dbConnect();
@@ -103,19 +100,16 @@ class Group
         $connectQr = $db->connectDB();
 
         //Inserting into group new group record
-        $sql = "INSERT INTO user_group (name, value, email, active, admin)
-        VALUES ('".$groupName."', '".$groupValue."', '".$email."', '1', '".$email."')";
+        $sql = "INSERT INTO user_group (name, value, email, admin)
+        VALUES ('".$groupName."', '".$groupValue."', '".$email."', '".$email."')";
 
             if (mysqli_query($connectQr, $sql)) {
                 return true;
-
               } else {
-
                 return false;
-            }           
-             $db->closeDB();
-
-    }
+              }           
+               $db->closeDB();
+          }
 
     //Inserting new record to existing group
     public function joinExistingGroup($groupName, $groupValue, $email){
@@ -123,21 +117,16 @@ class Group
         //New connection
         $db = new dbConnect();
         $connectQr = $db->connectDB();
-
-
         //Inserting new record
-        $sql = "INSERT INTO user_group (name, value, email, active)
-        VALUES ('".$groupName."', '".$groupValue."', '".$email."', '1')";
+        $sql = "INSERT INTO user_group (name, value, email)
+        VALUES ('".$groupName."', '".$groupValue."', '".$email."')";
             if (mysqli_query($connectQr, $sql)) {
-                return true;
-
-              } else {
-
+                echo "viss fine";
+                } else {
                 return false;
+                }
+                $db->closeDB();
             }
-            $db->closeDB();
-
-    }
 
     //Randaring new groupvalue for groupname
     public function getGroupValue (){
@@ -152,14 +141,11 @@ class Group
         while ($result->num_rows > 1) {
           $val = (md5(rand(10,100)));
         }
-
         return $val;
         $db->closeDB();
-
     }
 
     public function checkGroupMaster ($email){
-
         
         //New connection
         $db = new dbConnect();
@@ -173,7 +159,6 @@ class Group
 
         return true;          
         } else {
-
         return false;       
         }   
         $db->closeDB();
@@ -192,7 +177,6 @@ class Group
 
         return true;          
         } else {
-
         return false;       
         }    
         $db->closeDB();
@@ -211,10 +195,9 @@ class Group
 
       return $row["value"];          
       } else {
-
       return false;       
       }    
-            $db->closeDB();
+      $db->closeDB();
   }
 
   public function showGroupUsersList(){
@@ -223,23 +206,21 @@ class Group
         $connectQr = $db->connectDB();
         $usersList = array();    
 
-        $sql = "SELECT email FROM user_group WHERE name='".$_SESSION["adminGroupName"]."' AND admin != '".$_SESSION["email"]."'";
+        $sql = "SELECT email FROM user_group WHERE name='".$_SESSION["adminGroupName"]."'";
         $result = $connectQr->query($sql);
 
         if ($result->num_rows > 0) {
          // output data of each row
             while($row = $result->fetch_assoc()) {
               array_push($usersList, $row["email"]);
-              
-           
-      }
+            }
       return $usersList;
       $db->closeDB();
-
     }
   }
 
   public function setGroupResults($email){
+
     $db = new dbConnect();
     $connectQr = $db->connectDB();
 
@@ -249,12 +230,12 @@ class Group
     if($result->num_rows > 0){
       while($row = $result->fetch_assoc()){
         if ($row["showResults"] === '0'){
-          $sql2 = "UPDATE user_group SET showResults='1' WHERE admin='".$email."'";
-          if ($connectQr->query($sql2) === TRUE) {
+          $sqlEnable = "UPDATE user_group SET showResults='1' WHERE admin='".$email."'";
+          if ($connectQr->query($sqlEnable) === TRUE) {
             return true;}
            } else {
-            $sql3 = "UPDATE user_group SET showResults='0' WHERE admin='".$email."'";
-            if ($connectQr->query($sql3) === TRUE) {
+            $sqlDisable = "UPDATE user_group SET showResults='0' WHERE admin='".$email."'";
+            if ($connectQr->query($sqlDisable) === TRUE) {
               return true;}
           }
       }

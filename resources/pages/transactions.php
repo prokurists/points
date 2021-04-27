@@ -6,17 +6,19 @@ if (isset($_SESSION["email"])){
   $userView = new User();
   $userStartPoints = $userView->userStartingPoints();
   $userGainedPoints = $userView->userGainedPoints();
-  $commentView = new Comment();
-  $commentTo = $commentView->showToComments($_SESSION["email"], $currentMonth);
-  $commentToCounter = count($commentTo);
-  $commentToRow = 3;
+
+  $transactionView = new Transaction();
+  $transactionTo = $transactionView->showToTransactions($_SESSION["email"], $currentMonth);
+  $transactionToCounter = count($transactionTo);
+  $transactionToRow = 3;
+  $deleteButtonEnabled = true;
 
 ?>
 
 
 <?php require "transactions/transaction.php"; ?>
 
-<?php require "transactions/transaction_made.php"; ?>
+<?php require "transactions/transactions_made.php"; ?>
 <br>
 
 

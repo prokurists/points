@@ -2,7 +2,7 @@
 //Allow to see content only if you are logged in
 if (isset($_SESSION["email"])){
 
-    //$commentView = new Comment();
+    //$transactionView = new Transaction();
     $userView = new User();
 
     $users = $userView->getAllUsersOption();
@@ -12,7 +12,7 @@ if (isset($_SESSION["email"])){
 ?>
 <div class="card">
 <div class="card-body">
-<form action="/transaction" method="POST">
+<form action="<?php $request; ?>" method="POST">
     <div class="form-group">
       <label for="sel1">Select coworker:</label>
       <select class="form-control" id="sel1" name="emailto">
@@ -26,8 +26,8 @@ if (isset($_SESSION["email"])){
       <span class="badge badge-warning">Points left <?php echo $userMaxPoints; ?></span>
 
       <br>
-      <label for="comment">Comment:</label>
-  <textarea class="form-control" rows="1" name="comment"></textarea>
+      <label for="transaction">Transaction:</label>
+  <textarea class="form-control" rows="1" name="transaction"></textarea>
     </div>
     <button type="submit" class="btn btn-dark" name="new_transaction">Submit</button>
 

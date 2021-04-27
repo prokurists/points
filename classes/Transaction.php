@@ -1,8 +1,8 @@
 <?php
 
-class Comment{
+class Transaction{
 
-    public function createNewComment($emailFrom, $emailTo, $comment, $value, $groupName){
+    public function createNewTransaction($emailFrom, $emailTo, $transaction, $value, $groupName){
 
         $db = new dbConnect();
         $connectQr = $db->connectDB();
@@ -16,11 +16,11 @@ class Comment{
 
         $emailFrom = $this->test_input($emailFrom);
         $emailTo = $this->test_input($emailTo);
-        $comment = $this->test_input($comment);
+        $transaction = $this->test_input($transaction);
 
 
-            $sql = "INSERT INTO user_comments (email_from, email_to, comment, value, groupName)
-            VALUES ('".$emailFrom."', '".$emailTo."', '".$comment."', '".$value."', '".$groupName."')";
+            $sql = "INSERT INTO user_transactions (emailFrom, emailTo, transaction, user_group, value)
+            VALUES ('".$emailFrom."', '".$emailTo."', '".$transaction."', '".$groupName."', '".$value."')";
     
                 if (mysqli_query($connectQr, $sql)) {
                     return true;
@@ -40,51 +40,51 @@ class Comment{
         return $data;
       }
 
-    public function showFromComments($email, $monthChoosen){
+    public function showFromTransactions($email, $monthChoosen){
         
         $db = new dbConnect();
         $connectQr = $db->connectDB();
-        $commentsFrom = array();
+        $transactionsFrom = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_to = '".$email."' AND DATE_FORMAT(time_created, '%Y-%m') = '".$monthChoosen."'";
+        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$monthChoosen."'";
         $result = $connectQr->query($sql);
 
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                array_push($commentsFrom, array($row["comment"], $row["value"], $row["time_created"]));
+                array_push($transactionsFrom, array($row["transaction"], $row["value"], $row["created_date"]));
             }
         }
-        return $commentsFrom;
+        return $transactionsFrom;
         $db->closeDB();
 
 }
     
 
-    public function showToComments($email, $currentMonth){
+    public function showToTransactions($email, $currentMonth){
         
         $db = new dbConnect();
         $connectQr = $db->connectDB();
-        $showToComments = array();
+        $showToTransactions = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_from = '".$email."' AND DATE_FORMAT(time_created, '%Y-%m') = '".$currentMonth."'";
+        $sql = "SELECT * FROM user_transactions WHERE emailFrom = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$currentMonth."'";
         $result = $connectQr->query($sql);
       
 
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                array_push($showToComments, array($row["comment"], $row["value"], $row["time_created"], $row["email_to"], $row["id"]));
+                array_push($showToTransactions, array($row["transaction"], $row["value"], $row["created_date"], $row["emailTo"], $row["id"]));
             }
-        }
-        return $showToComments;
+        } 
+        return $showToTransactions;
         $db->closeDB();
 
     }
-	public function resetComment($adminGroupName){
+	public function resetTransaction($adminGroupName){
 		$db = new dbConnect();
 		$connectQr = $db->connectDB();
 		
 		// sql to delete a record
-        $sql = "DELETE FROM user_comments WHERE groupName='".$adminGroupName."'";
+        $sql = "DELETE FROM user_transactions WHERE user_group='".$adminGroupName."'";
 
         if ($connectQr->query($sql) === TRUE) {
         return true;
@@ -95,11 +95,11 @@ class Comment{
 
 	}
 
-    public function deleteComment($commentID){
+    public function deleteTransaction($transactionID){
         $db = new dbConnect();
         $connectQr = $db->connectDB();
 
-        $sql = "DELETE FROM user_comments WHERE id='".$commentID."'";
+        $sql = "DELETE FROM user_transactions WHERE id='".$transactionID."'";
 
         if($connectQr->query($sql) === TRUE){
             return true;
@@ -108,19 +108,19 @@ class Comment{
         }
     }
 
-    public function getTopUserComments($emailTo, $currentMonth){
+    public function getTopUserTransactions($emailTo, $currentMonth){
         $db = new dbConnect();
         $connectQr = $db->connectDB();
-        $commentArray = array();
+        $transactionArray = array();
 
-        $sql = "SELECT * FROM user_comments WHERE email_to = '".$emailTo."' AND DATE_FORMAT(time_created, '%Y-%m') = '".$currentMonth."'";
+        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$emailTo."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$currentMonth."'";
         $result = $connectQr->query($sql);
 
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                array_push($commentArray, $row["comment"]);
+                array_push($transactionArray, $row["transaction"]);
             }
-        }            return $commentArray;
+        }            return $transactionArray;
         $db->closeDB();
 
 

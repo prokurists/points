@@ -11,13 +11,13 @@
   $topUsers = new User();
   $usersList = $topUsers->getTopUser($_SESSION["groupName"]);
 
-  $topUsersComments = new Comment();
+  $topUsersTransactions = new Transaction();
 
  
 
   for ($row = 0; $row < count($usersList); $row++) {
 
-      $commentUsersList = $topUsersComments->getTopUserComments($usersList[$row][2], $currentMonth);
+      $transactionUsersList = $topUsersTransactions->getTopUserTransactions($usersList[$row][2], $currentMonth);
 
 
       echo "
@@ -26,8 +26,8 @@
       <div class='row'>
       <div class='col'>Points: ".$usersList[$row][1]."</div>
       <div class='col'>User: ".$usersList[$row][0]."</div><div class='col'><ul class='list-group list-group-flush'>";
-      for ($col = 0; $col < count($commentUsersList); $col++){
-      echo "<li class='list-group-item'>".$commentUsersList[$col]."</li>";
+      for ($col = 0; $col < count($transactionUsersList); $col++){
+      echo "<li class='list-group-item'>".$transactionUsersList[$col]."</li>";
 
     } echo "</ul></div></div></div></div><br>";
   }

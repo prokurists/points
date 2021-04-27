@@ -33,9 +33,7 @@ function toLoginPage (){
            "message" => "You are logged in!");
            $groupMaster = $xgroup->checkGroupMaster($email);
            $adminGroupName = $xgroup->getAdminGroupName($email);
-		       $groupName = $xgroup->getGroupNameR($email);
-
-
+		       $groupName = $xgroup->getGroupNameForSession($email);
 
            if ($groupMaster){
               $_SESSION["groupMaster"] = '1';
@@ -155,16 +153,16 @@ function toLoginPage (){
         $groupName = $_SESSION["adminGroupName"];
         $xuser->setWallet($quantity, $_SESSION["adminGroupName"]); }
       
-      //If you are logged you are adding new comment
+      //If you are logged you are adding new transaction
       if(isset($_POST["new_transaction"]) && ($_SESSION["loggedIn"] == 1)){
-        $newComment = new Comment();
+        $newTransaction = new Transaction();
 
         $emailTo = $_POST["emailto"];
         $emailFrom = $_SESSION["email"];
-        $comment = $_POST["comment"];
+        $transaction = $_POST["transaction"];
         $value = $_POST["quantity"];
         
-        $newComment->createNewComment($emailFrom, $emailTo, $comment, $value, $_SESSION["groupName"]);
+        $newTransaction->createNewTransaction($emailFrom, $emailTo, $transaction, $value, $_SESSION["groupName"]);
 
     }
 
@@ -179,24 +177,24 @@ function toLoginPage (){
         $xuser->resetGift($_SESSION["adminGroupName"]);   }
 
       //Group admin is resseting Gift Value
-      if (isset($_POST["resetComment"]) && ($_SESSION["groupMaster"] == 1) ){
-        $xComment = new Comment();
-        $xComment->resetComment($_SESSION["adminGroupName"]);   }
+      if (isset($_POST["resetTransaction"]) && ($_SESSION["groupMaster"] == 1) ){
+        $xTransaction = new Transaction();
+        $xTransaction->resetTransaction($_SESSION["adminGroupName"]);   }
 
-      if (isset($_POST["deleteComment"]) && (isset($_SESSION["email"]))){
-        $xComment = new Comment();
-        $commentID = $_POST["deleteCommentID"];
+      if (isset($_POST["deleteTransaction"]) && (isset($_SESSION["email"]))){
+        $xTransaction = new Transaction();
+        $transactionID = $_POST["deleteTransactionID"];
 
-        $xComment->deleteComment($commentID);
+        $xTransaction->deleteTransaction($transactionID);
 
-        $commentAmount = $_POST["commentAmount"];
+        $transactionAmount = $_POST["transactionAmount"];
         $emailFrom = $_SESSION["email"];
         $emailTo = $_POST["emailTo"];
 
         $xUser = new User();
 
 
-        $xUser->setUsersWalletGift($emailFrom, $emailTo, $commentAmount);
+        $xUser->setUsersWalletGift($emailFrom, $emailTo, $transactionAmount);
 
       }
       

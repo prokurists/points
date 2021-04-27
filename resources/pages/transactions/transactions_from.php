@@ -1,24 +1,25 @@
-<br><div class="container w80">
+<br>
 
 <?php
 
 
-if ($commentFromCounter < 3){
-  $commentFrom = $commentFromCounter;
+if ($transactionFromCounter < 3){
+  $transactionFromRow = $transactionFromCounter;
+  
 }
 
-if (!EMPTY($commentFrom)){
+if (!EMPTY($transactionFrom)){
   echo "<span class='badge badge-secondary'>Transactions recieved: </span>";
 
-for ($row = 0; $row < $commentFromRow; $row++) {
+for ($row = 0; $row < $transactionFromRow; $row++) {
   echo "<div class='card'>
   <div class='card-header'>
-  <span class='badge badge-success'>+".$commentFrom[$row][1]." POINTS</span>
-  <small class='text-muted text-right'>".$commentFrom[$row][2]."</small>
+  <span class='badge badge-success'>+".$transactionFrom[$row][1]." POINTS</span>
+  <small class='text-muted text-right'>".$transactionFrom[$row][2]."</small>
 
   </div>
   <div class='card-body'>
-      <p>".$commentFrom[$row][0]."</p>
+      <p>".$transactionFrom[$row][0]."</p>
   </div>
 
 </div>
@@ -26,22 +27,22 @@ for ($row = 0; $row < $commentFromRow; $row++) {
 <br>";
 }
 
-for ($row = 3; $row < $commentFrom; $row++) {
+for ($row = 3; $row < 5; $row++) {
   echo "<div id='showMoreFrom' class='collapse p-15'><div class='card'>
   <div class='card-header'>
 
-  <span class='badge badge-success'>+".$commentFrom[$row][1]." POINTS </span>
-  <span class='badge badge-light'>".$commentFrom[$row][2]."</span>
+  <span class='badge badge-success'>+".$transactionFrom[$row][1]." POINTS </span>
+  <span class='badge badge-light'>".$transactionFrom[$row][2]."</span>
 
 
   </div>
   <div class='card-body'>
-      <p>".$commentFrom[$row][0]."</p>
+      <p>".$transactionFrom[$row][0]."</p>
   </div></div>
 
 </div>";
 }
-if ($commentFromCounter > 3){
+if ($transactionFromCounter > 3){
 echo "  
 <a href='#showMoreFrom' class='btn btn-dark' data-toggle='collapse'> show/hide all
   <span class='badge badge-success'  </span></a>
@@ -55,4 +56,4 @@ echo "
   </div>
 </div>";
 }
-?></div>
+?>

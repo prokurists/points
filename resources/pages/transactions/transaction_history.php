@@ -9,21 +9,24 @@
 //Allow to see content only if you are logged in
 if (isset($_SESSION["loggedIn"])){
         echo "Last month history";
+        $deleteButtonEnabled = false;
 
 
-       $xComment = new Comment();
+       $xTransaction = new Transaction();
 
-       $commentFrom = $xComment->showFromComments($_SESSION["email"], $monthChoosen);
-       $commentFromCounter = count($commentFrom);
-       $commentFromRow = 3;
-
-       $commentTo = $xComment->showToComments($_SESSION["email"], $monthChoosen);
-       $commentToCounter = count($commentTo);
-       $commentToRow = 3;
+       $transactionFrom = $xTransaction->showFromTransactions($_SESSION["email"], $monthChoosen);
+       $transactionFromCounter = count($transactionFrom);
+       $transactionFromRow = 3;
+       print_r($transactionFrom);
 
 
-       require_once __DIR__.("/transaction_made.php");
-       require_once __DIR__.("/from_comments.php");
+       $transactionTo = $xTransaction->showToTransactions($_SESSION["email"], $monthChoosen);
+       $transactionToCounter = count($transactionTo);
+       $transactionToRow = 3;
+
+
+       require_once __DIR__.("/transactions_made.php");
+       require_once __DIR__.("/transactions_from.php");
 
 
 }else{

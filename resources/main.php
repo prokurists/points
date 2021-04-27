@@ -20,11 +20,6 @@ switch ($request) {
     case '/transaction_history' :
         require  'resources/pages/transactions/transaction_history.php';
         break;
-
-        case '/comments' :
-        require 'resources/pages/transactions.php';
-        break;
-
         
         case '/statistics' :
             require 'resources/pages/statistics.php';
