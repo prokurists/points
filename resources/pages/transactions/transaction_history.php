@@ -8,7 +8,6 @@
 <?php  
 //Allow to see content only if you are logged in
 if (isset($_SESSION["loggedIn"])){
-        echo "Last month history";
         $deleteButtonEnabled = false;
 
 
@@ -17,7 +16,6 @@ if (isset($_SESSION["loggedIn"])){
        $transactionFrom = $xTransaction->showFromTransactions($_SESSION["email"], $monthChoosen);
        $transactionFromCounter = count($transactionFrom);
        $transactionFromRow = 3;
-       print_r($transactionFrom);
 
 
        $transactionTo = $xTransaction->showToTransactions($_SESSION["email"], $monthChoosen);

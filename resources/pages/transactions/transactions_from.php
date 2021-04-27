@@ -27,19 +27,20 @@ for ($row = 0; $row < $transactionFromRow; $row++) {
 <br>";
 }
 
-for ($row = 3; $row < 5; $row++) {
+for ($row = 3; $row < $transactionFromCounter; $row++) {
   echo "<div id='showMoreFrom' class='collapse p-15'><div class='card'>
   <div class='card-header'>
-
-  <span class='badge badge-success'>+".$transactionFrom[$row][1]." POINTS </span>
-  <span class='badge badge-light'>".$transactionFrom[$row][2]."</span>
-
+  <span class='badge badge-success'>+".$transactionFrom[$row][1]." POINTS</span>
+  <small class='text-muted text-right'>".$transactionFrom[$row][2]."</small>
 
   </div>
   <div class='card-body'>
       <p>".$transactionFrom[$row][0]."</p>
-  </div></div>
+  </div>
 
+</div>
+
+<br>
 </div>";
 }
 if ($transactionFromCounter > 3){
