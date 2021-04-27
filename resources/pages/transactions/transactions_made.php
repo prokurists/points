@@ -41,8 +41,9 @@ echo  "<form action='/' method='POST'>
 
 </div><br>";
 }
+echo "<div id='showMoreTo' class='collapse p-15'>";
 for ($row = 3; $row < $transactionToCounter; $row++) {
-     echo "<div id='showMoreTo' class='collapse p-15'><div class='card'>
+     echo "<div class='card'>
     <div class='card-header'>
     <div class='row'>
     <div class='col-sm-2'>
@@ -72,8 +73,9 @@ for ($row = 3; $row < $transactionToCounter; $row++) {
   
     </div>
     </div>
-  </div>";
-  }
+  ";
+}
+echo "</div>";
 if ($transactionToCounter > 3){
   echo "  
   <a href='#showMoreTo' class='btn btn-dark' data-toggle='collapse'> show/hide all

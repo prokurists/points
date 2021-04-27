@@ -26,9 +26,9 @@ for ($row = 0; $row < $transactionFromRow; $row++) {
 
 <br>";
 }
-
+echo "<div id='showMoreFrom' class='collapse p-15'>";
 for ($row = 3; $row < $transactionFromCounter; $row++) {
-  echo "<div id='showMoreFrom' class='collapse p-15'><div class='card'>
+  echo "<div class='card'>
   <div class='card-header'>
   <span class='badge badge-success'>+".$transactionFrom[$row][1]." POINTS</span>
   <small class='text-muted text-right'>".$transactionFrom[$row][2]."</small>
@@ -41,8 +41,9 @@ for ($row = 3; $row < $transactionFromCounter; $row++) {
 </div>
 
 <br>
-</div>";
+";
 }
+echo "</div>";
 if ($transactionFromCounter > 3){
 echo "  
 <a href='#showMoreFrom' class='btn btn-dark' data-toggle='collapse'> show/hide all

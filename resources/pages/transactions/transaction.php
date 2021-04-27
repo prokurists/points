@@ -1,3 +1,5 @@
+<div class="container w80">
+
 <?php  
 //Allow to see content only if you are logged in
 if (isset($_SESSION["email"])){
@@ -15,19 +17,19 @@ if (isset($_SESSION["email"])){
 <form action="<?php $request; ?>" method="POST">
     <div class="form-group">
       <label for="sel1">Select coworker:</label>
-      <select class="form-control" id="sel1" name="emailto">
+      <select class="form-control" id="sel1" name="emailto" required>
 <?php foreach($users as $value){
     echo "<option value='".$value."'>".$userView->getUserName($value)."</option>";
 } ?>
       </select>
       <br>
       <label for="quantity">Points given:</label>
-      <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>">
+      <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>" required>
       <span class="badge badge-warning">Points left <?php echo $userMaxPoints; ?></span>
 
       <br>
       <label for="transaction">Transaction:</label>
-  <textarea class="form-control" rows="1" name="transaction"></textarea>
+  <textarea class="form-control" rows="1" name="transaction" required></textarea>
     </div>
     <button type="submit" class="btn btn-dark" name="new_transaction">Submit</button>
 
@@ -42,3 +44,4 @@ if (isset($_SESSION["email"])){
 
 }
   ?>
+  </div>

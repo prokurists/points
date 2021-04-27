@@ -1,4 +1,3 @@
-<div class="container w80">
 <?php  
 //Allow to see content only if you are logged in
 if (isset($_SESSION["email"])){
@@ -16,9 +15,10 @@ if (isset($_SESSION["email"])){
 ?>
 
 
-<?php require "transactions/transaction.php"; ?>
+<?php require __DIR__. "/transactions/transaction.php"; ?>
+<div class="container w80">
 
-<?php require "transactions/transactions_made.php"; ?>
+<?php require __DIR__."/transactions/transactions_made.php"; ?>
 <br>
 
 

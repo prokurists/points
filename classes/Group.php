@@ -121,8 +121,8 @@ class Group
         $sql = "INSERT INTO user_group (name, value, email)
         VALUES ('".$groupName."', '".$groupValue."', '".$email."')";
             if (mysqli_query($connectQr, $sql)) {
-                echo "viss fine";
-                } else {
+              return true;
+            } else {
                 return false;
                 }
                 $db->closeDB();
