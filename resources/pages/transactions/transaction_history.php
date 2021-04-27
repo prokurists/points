@@ -8,9 +8,8 @@
 <?php  
 //Allow to see content only if you are logged in
 if (isset($_SESSION["loggedIn"])){
-        $deleteButtonEnabled = false;
-
-
+       $deleteButtonEnabled = false;
+       
        $xTransaction = new Transaction();
 
        $transactionFrom = $xTransaction->showFromTransactions($_SESSION["email"], $monthChoosen);
