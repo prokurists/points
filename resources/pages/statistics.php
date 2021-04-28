@@ -24,8 +24,8 @@
       <div class='card'>
       <div class='card-body'>
       <div class='row'>
-      <div class='col-sm'>Points: ".$usersList[$row][1]."</div>
-      <div class='col-sm'>User: ".$usersList[$row][0]."</div><div class='col'><ul class='list-group list-group-flush'>";
+      <div class='col-sm-4'>Points: ".$usersList[$row][1]."<br>
+      User: ".$usersList[$row][0]."</div><hr><div class='col-sm'><ul class='list-group list-group-flush'>";
       for ($col = 0; $col < count($transactionUsersList); $col++){
       echo "<li class='list-group-item'>".$transactionUsersList[$col]."</li>";
 

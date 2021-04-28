@@ -28,6 +28,10 @@ body{
 .list-group-item{
     font-size: 10px;
 }
+
+.card-header{
+    padding:5px;
+}
 @media only screen and (max-width: 600px) {
     .w80 { 
         width:100%;

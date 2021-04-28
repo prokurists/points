@@ -17,14 +17,10 @@ echo $totalSumText;
 for ($row = 0; $row < $transactionFromRow; $row++) {
   echo "<div class='card'>
   <div class='card-header'>
-  <span class='badge badge-success'>+".$transactionFrom[$row][1]." POINTS</span>
-  <small class='text-muted text-right'>".$transactionFrom[$row][2]."</small>
+  <span class='badge badge-success'>".$transactionFrom[$row][1]." POINTS</span>
+  <b>Comment</b> ".$transactionFrom[$row][0]."
 
   </div>
-  <div class='card-body'>
-      <p>".$transactionFrom[$row][0]."</p>
-  </div>
-
 </div>
 
 <br>";
