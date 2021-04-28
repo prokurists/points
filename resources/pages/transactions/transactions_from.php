@@ -3,10 +3,8 @@
 <?php
 $xTotalSum = $xTransaction->getTotalValue($_SESSION["email"], $monthChoosen);
 if ($xTotalSum){
-  $totalSumText = "<div class='card'><div class='card-header'>Congratulations! You have received <h3> " . $xTotalSum. " </h3> POINTS this month!</div></div>";
-} else {
-  $totalSumText = "You have not received any points this month!";
-}
+  $totalSumText = "<div class='card'><div class='card-header'>Congratulations! You have received " . $xTotalSum. " POINTS this month!</div></div><br>";
+} 
 
 if ($transactionFromCounter < 3){
   $transactionFromRow = $transactionFromCounter;
@@ -66,7 +64,7 @@ echo "
   <div class='card-header'>
   </div>
   <div class='card-body'>
-      <p>You haven't recieved any rate yet</p>
+      <p>Unfortunately, there are no ratings this month</p>
   </div>
 </div>";
 }

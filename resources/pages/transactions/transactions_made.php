@@ -1,6 +1,7 @@
 <br>
 
 <?php
+       $xUser = new User();
 
 if ($transactionToCounter < 3){
   $transactionToRow = $transactionToCounter;
@@ -12,14 +13,11 @@ for ($row = 0; $row < $transactionToRow; $row++) {
   echo "<div class='card'>
   <div class='card-header'>
   <div class='row'>
-  <div class='col-sm-2'>
-  <span class='badge badge-danger'>-".$transactionTo[$row][1]." POINTS </span>
+  <div class='col align-self-start'>
+  <span class='badge badge-danger'>".$transactionTo[$row][1]." POINTS </span>
+  Sent to: ".$xUser->getUserName($transactionTo[$row][3])."
   </div>
-  <div class='col-sm-2'>
-  <span class='badge badge-light'>Date: ".$transactionTo[$row][2]."</span>
-  </div>
-  <div class='col-sm-8'>
-  Sent to: ".$transactionTo[$row][3]."";
+  Comment: ".$transactionTo[$row][0]."<div class='col-sm align-self-end'>";
   if ($deleteButtonEnabled){
 
 echo  "<form action='/' method='POST'>
@@ -34,10 +32,7 @@ echo  "<form action='/' method='POST'>
 
 
   </div>
-  <div class='card-body'>
-      <p>".$transactionTo[$row][0]."</p>
 
-  </div>
 
 </div><br>";
 }

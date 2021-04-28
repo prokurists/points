@@ -16,6 +16,7 @@ if (isset($_SESSION["loggedIn"])){
        $deleteButtonEnabled = false;
 
        $xTransaction = new Transaction();
+       $xUser = new User();
 
        $transactionFrom = $xTransaction->showFromTransactions($_SESSION["email"], $monthChoosen);
        $transactionFromCounter = count($transactionFrom);
@@ -28,7 +29,6 @@ if (isset($_SESSION["loggedIn"])){
 
 
        require_once __DIR__.("/transactions_from.php");
-       require_once __DIR__.("/transactions_made.php");
 
 
 
