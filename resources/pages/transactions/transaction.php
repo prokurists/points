@@ -15,28 +15,29 @@ if (isset($_SESSION["email"])){
 <div class="card">
 <div class="card-body">
 <form action="<?php $request; ?>" method="POST">
-    <div class="form-group">
-      <label for="sel1">Select coworker:</label>
-      <select class="form-control" id="sel1" name="emailto" required>
+<div class="form-row">
+  <div class="form-group col-md-4">
+      <label for="users">Select coworker:</label>
+      <select class="form-control" id="users" name="emailto" required>
 <?php foreach($users as $value){
     echo "<option value='".$value."'>".$userView->getUserName($value)."</option>";
 } ?>
       </select>
-      <br>
-      <label for="quantity">Points given:</label>
-      <input type="number" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>" required>
-      <span class="badge badge-warning">Points left <?php echo $userMaxPoints; ?></span>
-
-      <br>
-      <label for="transaction">Transaction:</label>
-  <textarea class="form-control" rows="1" name="transaction" required></textarea>
     </div>
+    <div class="form-group col-md-6">
+    <label for="transactions">Leave comment: </label>
+      <textarea class="form-control" rows="1" maxlength="200" name="transaction" required></textarea>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="quantity"><span class="badge badge-warning">Points left <?php echo $userMaxPoints; ?></span></label>
+      <input type="number" placeholder="Give points" class="form-control" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>" required>
+    </div>
+  </div>
     <button type="submit" class="btn btn-dark" name="new_transaction">Submit</button>
 
   </form>
-
-
-  </div>
+</div>
   </div>
 <?php 
 } else {

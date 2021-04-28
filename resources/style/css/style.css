@@ -3,36 +3,31 @@ body{
     margin: auto;
     padding-bottom:5px;
 }
-
 .jumbotron{
     background-color: white;
 }
-
-
 .hide {
     display:none;
 }
-
 .center{
-  text-align: center;
-}
+    display: flex;
+    align-items: center;
+  }
 .w80
 {
     width:60%;
     margin:auto;
 }
-.card{
-   padding:2px;
-}
+.verticalline {
+    border-left: 6px solid gray;
+    height: 1em;
+    display: inline-block;
 
-.list-group-item{
-    font-size: 10px;
-}
-
-.card-header{
-    padding:5px;
-}
-@media only screen and (max-width: 600px) {
+  }
+  .list-group-item{
+      font-size:12px;
+  }
+@media only screen and (max-width: 500px) {
     .w80 { 
         width:100%;
         margin:auto;

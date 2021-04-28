@@ -3,7 +3,7 @@
 <?php
 $xTotalSum = $xTransaction->getTotalValue($_SESSION["email"], $monthChoosen);
 if ($xTotalSum){
-  $totalSumText = "<div class='card'><div class='card-header'>Congratulations! You have received " . $xTotalSum. " POINTS this month!</div></div><br>";
+  $totalSumText = "<div class='card'><div class='card-body'>Congratulations! You have received " . $xTotalSum. " POINTS this month!</div></div><br>";
 } 
 
 if ($transactionFromCounter < 3){
@@ -12,14 +12,18 @@ if ($transactionFromCounter < 3){
 }
 
 if (!EMPTY($transactionFrom)){
-  echo "<span class='badge badge-secondary'>Transactions recieved: </span>";
+  echo "<span class='badge badge-secondary'>Transactions recieved: </span><br>";
 echo $totalSumText;
 for ($row = 0; $row < $transactionFromRow; $row++) {
   echo "<div class='card'>
-  <div class='card-header'>
+  <div class='card-body'>
+  <div class='row'>
+  <div class='col-sm'>
   <span class='badge badge-success'>".$transactionFrom[$row][1]." POINTS</span>
-  <b>Comment</b> ".$transactionFrom[$row][0]."
-
+  </div>
+  <div class='col-sm-8'>
+  ".$transactionFrom[$row][0]."
+</div></div>
   </div>
 </div>
 
@@ -57,8 +61,7 @@ echo "
 ";}
 } else {
   echo "<div class='card'>
-  <div class='card-header'>
-  </div>
+
   <div class='card-body'>
       <p>Unfortunately, there are no ratings this month</p>
   </div>

@@ -12,12 +12,14 @@ for ($row = 0; $row < $transactionToRow; $row++) {
 
   echo "
   <div class='card'>
-  <div class='card-header'>
+  <div class='card-body'>
   <div class='row'>
-  <div class='col-sm-10 align-self-start'>
-  <span class='badge badge-danger'>".$transactionTo[$row][1]." POINTS  </span>|
-  Sent to: ".$xUser->getUserName($transactionTo[$row][3])."  |
-  Comment: ".$transactionTo[$row][0]."</div><div class='col-sm align-self-end'>";
+  <div class='col-sm-10-offset-2 align-self-start'>
+  <span class='badge badge-danger'>".$transactionTo[$row][1]." POINTS  </span> 
+
+  <b>Sent to:</b> ".$xUser->getUserName($transactionTo[$row][3])."</div>
+  <div class='col-sm align-self-center'><b>Comment:</b> ".$transactionTo[$row][0]."</div><div class='col-sm-1 align-self-end'>
+  ";
 
   if ($deleteButtonEnabled){
   echo  "<form action='/' method='POST'>
@@ -36,7 +38,7 @@ echo "<div id='showMoreTo' class='collapse p-15'>";
 for ($row = 3; $row < $transactionToCounter; $row++) {
   echo "
   <div class='card'>
-  <div class='card-header'>
+  <div class='card-body'>
   <div class='row'>
   <div class='col-sm-10 align-self-start'>
   <span class='badge badge-danger'>".$transactionTo[$row][1]." POINTS </span>

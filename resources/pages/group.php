@@ -72,7 +72,7 @@ for ($row = 0; $row < count($usersList); $row++) {
 
 <div class="col">
 <form action="<?php echo $request; ?>" method="POST">
-<button type="submit" class="btn btn-dark btn-block" name="resetWallet">Reset wallet</button>
+<button type="submit" class="btn btn-dark btn-block" name="resetWallet" onclick="alert('Are you sure want to reset wallet?')">Reset wallet</button>
 </form>
 </div>
 <div class="col">
