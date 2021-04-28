@@ -12,7 +12,7 @@ class User  {
         $connectQr = $db->connectDB(); 
         
         //Selecting password where email = POST email
-        $sql = "SELECT id, password FROM users WHERE email = '".$email."'";
+        $sql = "SELECT password FROM users WHERE email = '".$email."'";
         $result = $connectQr->query($sql);
 
         //If email exists then checking if password is correct
