@@ -5,8 +5,8 @@
 ?>
 <div class="container w80">
 <form action="/transaction_history" method="POST">
-  <label for="birthday">Choose data month:</label>
-  <input type="month" max="<?php echo $currentMonth; ?>" value="<?php echo $monthChoosen; ?>" name="monthChoosen">
+  <label for="datepicker">Choose data month:</label>
+  <input type="date" id="datepicker" max="<?php echo $currentMonth; ?>" value="<?php echo $monthChoosen; ?>" name="monthChoosen">
   <input type="submit" name="setMonth">
 </form>
 

@@ -30,7 +30,7 @@ if (isset($_SESSION["email"])){
     </div>
 
     <div class="form-group col-md-2">
-      <label for="quantity"><span class="badge badge-warning">Points left <?php echo $userMaxPoints; ?></span></label>
+      <label for="quantity">Points left <?php echo $userMaxPoints; ?></label>
       <input type="number" placeholder="Give points" class="form-control" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>" required>
     </div>
   </div>

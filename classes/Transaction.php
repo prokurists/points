@@ -66,7 +66,7 @@ class Transaction{
         $connectQr = $db->connectDB();
         $showToTransactions = array();
 
-        $sql = "SELECT * FROM user_transactions WHERE emailFrom = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$currentMonth."'";
+        $sql = "SELECT * FROM user_transactions WHERE emailFrom = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$currentMonth."' ORDER BY created_date DESC";
         $result = $connectQr->query($sql);
       
 
