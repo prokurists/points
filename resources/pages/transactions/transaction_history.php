@@ -27,8 +27,9 @@ if (isset($_SESSION["loggedIn"])){
        $transactionToRow = 3;
 
 
-       require_once __DIR__.("/transactions_made.php");
        require_once __DIR__.("/transactions_from.php");
+       require_once __DIR__.("/transactions_made.php");
+
 
 
 }else{

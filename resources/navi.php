@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Home</a>
-  <img src="/resources/style/images/logo.png" alt="" width="50" height="44">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,6 +7,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <?php if(!isset($_SESSION["loggedIn"])){ ?>
+        <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/register">Register</a>
       </li>
@@ -16,9 +18,7 @@
         <li class="nav-item">
         <a class="nav-link" href="/transaction_history">Transaction History</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/transaction">New Transaction</a>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="/statistics">TOP users</a>
       </li>

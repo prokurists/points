@@ -5,7 +5,7 @@
   $showGroupResults = new Group();
 
 
-  if ($showGroupResults->showGroupResults($_SESSION["email"])){
+  if ($showGroupResults->showGroupResults($_SESSION["groupName"])){
 
 
   $topUsers = new User();

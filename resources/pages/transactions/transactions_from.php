@@ -1,7 +1,12 @@
 <br>
 
 <?php
-
+$xTotalSum = $xTransaction->getTotalValue($_SESSION["email"], $monthChoosen);
+if ($xTotalSum){
+  $totalSumText = "<div class='card'><div class='card-header'>Congratulations! You have received <h3> " . $xTotalSum. " </h3> POINTS this month!</div></div>";
+} else {
+  $totalSumText = "You have not received any points this month!";
+}
 
 if ($transactionFromCounter < 3){
   $transactionFromRow = $transactionFromCounter;
@@ -10,7 +15,7 @@ if ($transactionFromCounter < 3){
 
 if (!EMPTY($transactionFrom)){
   echo "<span class='badge badge-secondary'>Transactions recieved: </span>";
-
+echo $totalSumText;
 for ($row = 0; $row < $transactionFromRow; $row++) {
   echo "<div class='card'>
   <div class='card-header'>
@@ -44,6 +49,13 @@ for ($row = 3; $row < $transactionFromCounter; $row++) {
 ";
 }
 echo "</div>";
+function getTotalAmount($totalAmount){
+  if ($totalAmount > 1){
+    echo "Congratulations! you got".$totalAmount." POINTS this month!";
+  } else {
+    echo "You got no points this month!";
+  }
+}
 if ($transactionFromCounter > 3){
 echo "  
 <a href='#showMoreFrom' class='btn btn-dark' data-toggle='collapse'> show/hide all

@@ -125,5 +125,23 @@ class Transaction{
 
 
     }
+
+    public function getTotalValue($email, $monthChoosen){ 
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+        $totalSum = 0;
+    
+        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$monthChoosen."'";
+        $result = $connectQr->query($sql);
+
+        if ($result->num_rows >0){
+            while($row = $result->fetch_assoc()){
+                $totalSum = $totalSum + $row["value"];
+            }
+        } else {
+            return false;
+        }
+        return $totalSum;
+      }
     
 }

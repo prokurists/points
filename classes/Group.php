@@ -2,7 +2,7 @@
 
 class Group
 {
-
+  
 
     //Checking if groupname is avaiable
     public function checkGroupAvailability($groupName){
@@ -246,23 +246,26 @@ class Group
 
   }
 
-  public function showGroupResults($email){
+  public function showGroupResults($groupName){
     $db = new dbConnect();
     $connectQr = $db->connectDB();
 
-    $sql = "SELECT showResults FROM user_group WHERE admin='".$email."'"; 
+    $sql = "SELECT showResults FROM user_group WHERE name='".$groupName."' AND admin=email"; 
     $result = $connectQr->query($sql);
     
     if($result->num_rows > 0){
       while($row = $result->fetch_assoc()){
-        return $row["showResults"];
-          }
+
+      return $row["showResults"];
+      }
     } else {
       return false;
     }
     $db->closeDB();
 
   }
+
+
   
 
 }
