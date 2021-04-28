@@ -203,8 +203,11 @@ function toLoginPage (){
       }
 
       if(isset($_SESSION["email"]) && (isset($_POST["setMonth"]))){
+        if (trim($_POST["setMonth"]) === (trim($currentMonth))){
+          echo "tu nevari izveleties tekoso menesi!";
+        } else {
         $_SESSION["month"] = $_POST["monthChoosen"];
-        header("Refresh:0; URL=/transaction_history");
+        header("Refresh:0; URL=/transaction_history");}
       }
       
 

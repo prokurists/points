@@ -46,13 +46,15 @@ class Transaction{
         $connectQr = $db->connectDB();
         $transactionsFrom = array();
 
-        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$monthChoosen."'";
+        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$monthChoosen."' AND DATE_FORMAT(created_date, '%Y-%m') != '".$currentMonth."'";
         $result = $connectQr->query($sql);
 
         if ($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 array_push($transactionsFrom, array($row["transaction"], $row["value"], $row["created_date"]));
-            }
+            } } else{
+                return false;
+            
         }
         return $transactionsFrom;
         $db->closeDB();
