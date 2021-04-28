@@ -7,10 +7,9 @@ $pageTitle = "Points system";
 if(isset($_SESSION["month"])){
   $monthChoosen = $_SESSION["month"];
 } else{
-  $monthChoosen = date('Y-m');
+  $monthChoosen = date('Y-m', strtotime("-1 months"));
 }
 $currentMonth = date('Y-m');
-
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
 

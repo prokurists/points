@@ -1,7 +1,12 @@
+
+<?php
+       $currentMonth = date('Y-m', strtotime("-1 months"));
+
+?>
 <div class="container w80">
 <form action="/transaction_history" method="POST">
   <label for="birthday">Choose data month:</label>
-  <input type="month" value="<?php echo $monthChoosen; ?>" name="monthChoosen">
+  <input type="month" max="<?php echo $currentMonth; ?>" value="<?php echo $monthChoosen; ?>" name="monthChoosen">
   <input type="submit" name="setMonth">
 </form>
 
@@ -9,7 +14,7 @@
 //Allow to see content only if you are logged in
 if (isset($_SESSION["loggedIn"])){
        $deleteButtonEnabled = false;
-       
+
        $xTransaction = new Transaction();
 
        $transactionFrom = $xTransaction->showFromTransactions($_SESSION["email"], $monthChoosen);

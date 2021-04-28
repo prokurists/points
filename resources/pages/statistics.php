@@ -34,7 +34,7 @@
 
 
 }else{
-  echo "You need to wait for admin to see results.";
+  echo "  <button class='btn btn-dark btn-block' name='showGroupResults'>You need to wait for admin to see results.</button><br>";
 }
 if (isset($_SESSION["groupMaster"])){
   echo "<div class='col-sm'>
