@@ -155,13 +155,22 @@ function toLoginPage (){
       //If you are logged you are adding new transaction
       if(isset($_POST["new_transaction"]) && ($_SESSION["loggedIn"] == 1)){
         $newTransaction = new Transaction();
+        $xUser = new User();
 
         $emailTo = $_POST["emailto"];
         $emailFrom = $_SESSION["email"];
         $transaction = $_POST["transaction"];
         $value = $_POST["quantity"];
         
-        $newTransaction->createNewTransaction($emailFrom, $emailTo, $transaction, $value, $_SESSION["groupName"]);
+
+        if ($xUser->checkUsersBallance($emailFrom)){
+          $newTransaction->createNewTransaction($emailFrom, $emailTo, $transaction, $value, $_SESSION["groupName"]);
+        } else {
+          $resMessage = array(
+            "status" => "alert-danger",
+            "message" => "You have no POINS LEFT!");
+        }
+
 
     }
 
@@ -178,7 +187,7 @@ function toLoginPage (){
       //Group admin is resseting Gift Value
       if (isset($_POST["resetTransaction"]) && ($_SESSION["groupMaster"] == 1) ){
         $xTransaction = new Transaction();
-        echo $xTransaction->resetTransaction($_SESSION["adminGroupName"]);   }
+        $xTransaction->resetTransaction($_SESSION["adminGroupName"]);   }
 
       if (isset($_POST["deleteTransaction"]) && (isset($_SESSION["email"]))){
         $xTransaction = new Transaction();
@@ -192,7 +201,7 @@ function toLoginPage (){
 
         $xUser = new User();
 
-
+        
         $xUser->setUsersWalletGift($emailFrom, $emailTo, $transactionAmount);
 
       }

@@ -308,17 +308,48 @@ $db->closeDB();
         $db = new dbConnect();
         $connectQr = $db->connectDB();
 
-        $sqlPlus = "UPDATE users SET wallet = wallet - '".$value."' WHERE email = '".$emailFrom."'";
-        $sqlMinus = "UPDATE users SET gift = gift + '".$value."' WHERE email = '".$emailTo."'";
+        $sql = "SELECT * FROM users WHERE email = '".$emailFrom."'";
+        $result = $connectQr->query($sql);
 
-        if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
-            return true;
-        } else {
-                return false;
+        if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                if ($row["wallet"] > 0){
+                    $sqlPlus = "UPDATE users SET wallet = wallet - '".$value."' WHERE email = '".$emailFrom."'";
+                    $sqlMinus = "UPDATE users SET gift = gift + '".$value."' WHERE email = '".$emailTo."'";
+            
+                    if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
+                        return true;
+                    } else {
+                            return false;
+                        }
+                } else {
+                    return false;
+                }
             }
+        }
+
+
             $db->closeDB();
 
     }
 
+    public function checkUsersBallance($emailFrom){
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        $sql = "SELECT * FROM users WHERE email = '".$emailFrom."'";
+        $result = $connectQr->query($sql);
+
+        if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                if ($row["wallet"] > 0){
+                    return true;
+    } else {
+        return false;
+    }
+            }
+            $db->closeDB();
+        }
+}
 }
 ?> 
