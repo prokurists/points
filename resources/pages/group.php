@@ -77,7 +77,7 @@ for ($row = 0; $row < count($usersList); $row++) {
 </div>
 <div class="col">
 <form action="<?php echo $request; ?>" method="POST">
-<button type="submit" class="btn btn-dark btn-block" name="resettransaction">Reset transactions</button>
+<button type="submit" class="btn btn-dark btn-block" name="resetTransaction">Reset transactions</button>
 </form>
 
 

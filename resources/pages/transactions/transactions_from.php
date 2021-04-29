@@ -32,19 +32,18 @@ for ($row = 0; $row < $transactionFromRow; $row++) {
 echo "<div id='showMoreFrom' class='collapse p-15'>";
 for ($row = 3; $row < $transactionFromCounter; $row++) {
   echo "<div class='card'>
-  <div class='card-header'>
-  <span class='badge badge-success'>+".$transactionFrom[$row][1]." POINTS</span>
-  <small class='text-muted text-right'>".$transactionFrom[$row][2]."</small>
-
-  </div>
   <div class='card-body'>
-      <p>".$transactionFrom[$row][0]."</p>
+  <div class='row'>
+  <div class='col-sm'>
+  <span class='badge badge-success'>".$transactionFrom[$row][1]." POINTS</span>
   </div>
-
+  <div class='col-sm-8'>
+  ".$transactionFrom[$row][0]."
+</div></div>
+  </div>
 </div>
 
-<br>
-";
+<br>";
 }
 echo "</div>";
 function getTotalAmount($totalAmount){

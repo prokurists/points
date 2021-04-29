@@ -178,7 +178,7 @@ function toLoginPage (){
       //Group admin is resseting Gift Value
       if (isset($_POST["resetTransaction"]) && ($_SESSION["groupMaster"] == 1) ){
         $xTransaction = new Transaction();
-        $xTransaction->resetTransaction($_SESSION["adminGroupName"]);   }
+        echo $xTransaction->resetTransaction($_SESSION["adminGroupName"]);   }
 
       if (isset($_POST["deleteTransaction"]) && (isset($_SESSION["email"]))){
         $xTransaction = new Transaction();
@@ -203,9 +203,11 @@ function toLoginPage (){
       }
 
       if(isset($_SESSION["email"]) && (isset($_POST["setMonth"]))){
-        if (trim($_POST["setMonth"]) === (trim($currentMonth))){
-          echo "tu nevari izveleties tekoso menesi!";
-        } else {
+        if (trim($_POST["monthChoosen"]) === (trim($currentMonth))){
+          $resMessage = array(
+            "status" => "alert-danger",
+            "message" => "You cant look current month transactions!");
+                  } else {
         $_SESSION["month"] = $_POST["monthChoosen"];
         header("Refresh:0; URL=/transaction_history");}
       }
