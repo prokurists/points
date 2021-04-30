@@ -232,16 +232,19 @@ class Group
         if ($row["showResults"] === '0'){
           $sqlEnable = "UPDATE user_group SET showResults='1' WHERE admin='".$email."'";
           if ($connectQr->query($sqlEnable) === TRUE) {
-            return true;}
+            return true;
+          }
            } else {
             $sqlDisable = "UPDATE user_group SET showResults='0' WHERE admin='".$email."'";
             if ($connectQr->query($sqlDisable) === TRUE) {
-              return true;}
+              return true;
+            }
           }
       }
     } else {
       return false;
     }      
+    
           $db->closeDB();
 
   }
@@ -259,7 +262,7 @@ class Group
       return $row["showResults"];
       }
     } else {
-      return false;
+      return 0;
     }
     $db->closeDB();
 

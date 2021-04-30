@@ -1,7 +1,6 @@
 <br>
 
 <?php
-       $xUser = new User();
 
 if ($transactionToCounter < 3){
   $transactionToRow = $transactionToCounter;
@@ -21,7 +20,7 @@ for ($row = 0; $row < $transactionToRow; $row++) {
   <div class='col-sm align-self-center'><b>Comment:</b> ".$transactionTo[$row][0]."</div><div class='col-sm-2 align-self-end'>
   ";
 
-  if ($deleteButtonEnabled){
+  if (!$showResults){
   echo  "<form action='/' method='POST'>
   <input type='hidden' name='deleteTransactionID' value='".$transactionTo[$row][4]."'>
   <input type='hidden' name='transactionAmount' value='".$transactionTo[$row][1]."'>
@@ -48,7 +47,7 @@ for ($row = 3; $row < $transactionToCounter; $row++) {
   ";
 
 
-  if ($deleteButtonEnabled){
+  if (!$showResults){
   echo  "<form action='/' method='POST'>
   <input type='hidden' name='deleteTransactionID' value='".$transactionTo[$row][4]."'>
   <input type='hidden' name='transactionAmount' value='".$transactionTo[$row][1]."'>

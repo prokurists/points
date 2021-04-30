@@ -4,12 +4,14 @@ $request = $_SERVER['REQUEST_URI'];
 $regKey = @end(explode("?key=",$_SERVER['REQUEST_URI']));
 $pageTitle = "Points system";
 
+
 if(isset($_SESSION["month"])){
   $monthChoosen = $_SESSION["month"];
 } else{
   $monthChoosen = date('Y-m', strtotime("-1 months"));
 }
 $currentMonth = date('Y-m');
+
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
 
@@ -207,8 +209,10 @@ function toLoginPage (){
       }
       
       if (isset($_SESSION["groupMaster"]) && (isset($_POST["showGroupResults"]))){
-        $setGroupResults = new Group();
-        $setGroupResults->setGroupResults($_SESSION["email"]);
+        $GroupResults = new Group();
+        $GroupResults->setGroupResults($_SESSION["email"]);
+        
+
       }
 
       if(isset($_SESSION["email"]) && (isset($_POST["setMonth"]))){
@@ -221,6 +225,14 @@ function toLoginPage (){
         header("Refresh:0; URL=/transaction_history");}
       }
       
+      if (isset($_SESSION["email"])){
+
+        $xUser = new User();
+        $xGroup = new Group();
+        $showResults = $xGroup->showGroupResults($_SESSION["groupName"]);
+        
+
+      }
 
 
   

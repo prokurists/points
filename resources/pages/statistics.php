@@ -2,10 +2,8 @@
 <div class="container w80">
 <?php
 
-  $showGroupResults = new Group();
 
-
-  if ($showGroupResults->showGroupResults($_SESSION["groupName"])){
+  if ($showResults){
 
 
   $topUsers = new User();
