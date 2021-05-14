@@ -32,7 +32,10 @@ body{
 }
 
 .col-sm{
-    padding-top:450px;
+    padding-top:250px;
+}
+ul{
+    list-style-type:none;
 }
 </style>
 </head>
@@ -46,4 +49,29 @@ body{
 
 <div class="col-sm second">
 <h1>Plānotie darbi līdz <b>17.05.2021 00:00</b></h1>
+<ul>
+
+<h2>Darbu saraksts:</h2><hr>
+<h3>Vizuāli</h3>
+<li>Ievietot krāsu paletes/background</li>
+<li>Pielāgot izmērus datorā/telefonā</li>
+<li>Pielāgot formas pie krāsu paletēm, lai nekas nekur nespīd cauri</li>
+<li>Atstāt tikai kļūdas paziņojumus un tos integret formā.</li>
+<li>Uztaisīt formu pievilcīgaku/caurspīdīgaku.</li>
+<hr>
+<h3>Admin sadaļa</h3>
+
+<li>GROUP settings:</li>
+<li>Grupas invite links</li>
+<li>Grupas maka vērtība, kurš atjaunojās katru mēnesi</li>
+<hr>
+
+
+<h3>Tehniski</h3>
+<li>Datubāze user_wallet pievienot email, wallet, gift</li>
+<li>TOP users radas paģāšā(tagad esošais) mēneša rezultāti ar darbinieku sasniegumiem</li>
+<li>Komentāri iesaldējās 29 datumā</li>
+<li>1 datumā tiek piešķirts jauns grozs.</li>
+<li>1 datumā ir iespēja apskatīties statistiku līdz 7 datumam</li>
+</ul><hr>
 </div>
