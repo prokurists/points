@@ -3,6 +3,7 @@
 $request = $_SERVER['REQUEST_URI'];
 $regKey = @end(explode("?key=",$_SERVER['REQUEST_URI']));
 $pageTitle = "Points system";
+$maintance = true;
 
 
 if(isset($_SESSION["month"])){

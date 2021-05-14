@@ -4,6 +4,10 @@ session_start();
 require_once 'classes/autoload.php';
 require_once 'core/functions.php';
 
+if ($maintance){
+  require 'resources/pages/maintance.php';
+} else {
+
 
 ?>
 
@@ -42,3 +46,4 @@ require_once 'core/functions.php';
 
   </body>
 </html>
+<?php } ?>
