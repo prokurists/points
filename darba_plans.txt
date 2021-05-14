@@ -1,6 +1,25 @@
-Vizuali
+Vizuāli
+    1. Ievietot krāsu paletes/background
+    2. Pielāgot izmērus datorā/telefonā
+    3. Pielāgot formas pie krāsu paletēm, lai nekas nekur nespīd cauri
+    4. Atstāt tikai kļūdas paziņojumus un tos integret formā.
+    5. Uztaisīt formu pievilcīgaku/caurspīdīgaku.
 
-1. Sakārtot navigāciju/Footeri
-2. History/Points from kam aizsutita nauda
-3. Resset gift poga un Resset wallet poga - funkcionalitati pievienot.
-4. Izslegt iespeju radit pašam sevi un sev skaitit naudu.
+    GROUP settings:
+    Grupas invite links
+    Grupas maka vērtība, kurš atjaunojās katru mēnesi
+
+
+
+Tehniski
+    1. Datubāze user_wallet pievienot email, wallet, gift
+    2. TOP users radas paģāšā(tagad esošais) mēneša rezultāti ar darbinieku sasniegumiem
+    3. Komentāri iesaldējās 29 datumā
+    4. 1 datumā tiek piešķirts jauns grozs.
+    5. 1 datumā ir iespēja apskatīties statistiku līdz 7 datumam
+
+Promotēt
+ONEPAGERI
+
+
+CV

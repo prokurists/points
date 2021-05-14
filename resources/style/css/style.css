@@ -2,10 +2,12 @@ body{
     width:100%;
     margin: auto;
     padding-bottom:5px;
+    background-color: #53D8FB;;
 }
 .jumbotron{
-    background-color: white;
+    background-color: #53D8FB;
 }
+
 .hide {
     display:none;
 }
@@ -15,7 +17,7 @@ body{
   }
 .w80
 {
-    width:60%;
+    width:50%;
     margin:auto;
 }
 .verticalline {
@@ -27,6 +29,20 @@ body{
   .list-group-item{
       font-size:12px;
   }
+
+  .navbar-dark{
+    background-color: #363732;
+  }
+
+  .btn-dark{
+    background-color: #363732;
+
+  }
+  .form-group{
+    background-color: rgba(0, 0, 0, 0);
+    border:none;
+  }
+
 @media only screen and (max-width: 500px) {
     .w80 { 
         width:100%;
