@@ -6,17 +6,20 @@ if (isset($_SESSION["email"])){
 
     //$transactionView = new Transaction();
     $userView = new User();
+    $walletView = new Wallet();
+
+    $email = $_SESSION["email"];
 
     $users = $userView->getAllUsersOption();
-    $userMaxPoints = $userView->userStartingPoints();
+    $userMaxPoints = $walletView->userWalletAmount($email);
     
     
 ?>
-<div class="card">
+<div class="card opa05">
 <div class="card-body">
 <form action="<?php $request; ?>" method="POST">
 <div class="form-row">
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4 ">
       <label for="users">Select coworker:</label>
       <select class="form-control" id="users" name="emailto" required>
 <?php foreach($users as $value){
@@ -34,7 +37,7 @@ if (isset($_SESSION["email"])){
       <input type="number" placeholder="Give points" class="form-control" id="quantity" name="quantity" min="1" max="<?php echo $userMaxPoints; ?>" required>
     </div>
   </div>
-    <button type="submit" class="btn btn-dark" name="new_transaction">Submit</button>
+    <button type="submit" class="btn btn-dark btn-block" name="new_transaction">Thank someone</button>
 
   </form>
 </div>

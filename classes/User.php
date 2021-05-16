@@ -107,23 +107,7 @@ class User  {
 
     }
 
-    public function userStartingPoints(){
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
 
-        $email = $_SESSION["email"];
-
-        $sql = "SELECT wallet FROM users where email = '".$email."'";
-        $result = $connectQr->query($sql);
-
-        if ($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                return $row["wallet"];
-    }
-}
-$db->closeDB();
-
-}
 
 
     public function userGainedPoints(){

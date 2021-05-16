@@ -63,8 +63,8 @@ echo "</div>";
 if ($transactionToCounter > 3){
 
   echo "  
-  <a href='#showMoreTo' class='btn btn-dark' data-toggle='collapse'>
-   show/hide all
+  <a href='#showMoreTo' class='btn btn-dark btn-block' data-toggle='collapse'>
+   Show / hide all
   <span class='badge badge-success'  </span></a>
   ";}
   } else {

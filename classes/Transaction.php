@@ -46,7 +46,7 @@ class Transaction{
         $connectQr = $db->connectDB();
         $transactionsFrom = array();
 
-        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$monthChoosen."' AND DATE_FORMAT(created_date, '%Y-%m') != '".$currentMonth."'";
+        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$monthChoosen."'";
         $result = $connectQr->query($sql);
 
         if ($result->num_rows > 0){
@@ -110,12 +110,12 @@ class Transaction{
         }
     }
 
-    public function getTopUserTransactions($emailTo, $currentMonth){
+    public function getTopUserTransactions($emailTo, $lastMonth){
         $db = new dbConnect();
         $connectQr = $db->connectDB();
         $transactionArray = array();
 
-        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$emailTo."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$currentMonth."'";
+        $sql = "SELECT * FROM user_transactions WHERE emailTo = '".$emailTo."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$lastMonth."'";
         $result = $connectQr->query($sql);
 
         if($result->num_rows > 0){

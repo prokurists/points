@@ -32,7 +32,7 @@ body{
 }
 
 .col-sm{
-    padding-top:250px;
+    padding-top:5em;
 }
 ul{
     list-style-type:none;

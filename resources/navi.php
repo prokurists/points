@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="/">Home</a>
+  <a class="navbar-brand" href="/">POINTS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,12 +15,8 @@
       </li>
 
       <?php }else{ ?>
-        <li class="nav-item">
-        <a class="nav-link" href="/transaction_history">Transaction History</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="/statistics">TOP users</a>
+  <li class="nav-item">
+        <a class="nav-link" href="/statistics">Statistics</a>
       </li>
       <?php if(isset($_SESSION["groupMaster"])){?>
       <li class="nav-item">
@@ -29,8 +25,15 @@
         <?php } ?>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    <span class="badge badge-pill badge-light">Hello, <?php echo $_SESSION["email"]; ?> </span><br>
+    <a class="nav-link" href="/profile"><i class="fa fa-user" style="font-size:20px; color:green; padding-left:2px;"></i></a>
+
+    <span class="badge badge-light">Hello, 
+    <?php
+    $xUser = new User();
+
+    echo $xUser->getUserName($_SESSION["email"]); ?> </span><br>
     <a class="nav-link" href="/logout"><i class="fa fa-sign-out" style="font-size:20px; color:red; padding-left:2px;"></i></a>
+
 <?php }?>
 
 

@@ -10,7 +10,6 @@ if (isset($_SESSION["email"])){
   $transactionTo = $transactionView->showToTransactions($_SESSION["email"], $currentMonth);
   $transactionToCounter = count($transactionTo);
   $transactionToRow = 3;
-  $deleteButtonEnabled = true;
 
 ?>
 

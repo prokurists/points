@@ -2,8 +2,6 @@
 
 $request = $_SERVER['REQUEST_URI'];
 $regKey = @end(explode("?key=",$_SERVER['REQUEST_URI']));
-$pageTitle = "Points system";
-$maintance = true;
 
 
 if(isset($_SESSION["month"])){
@@ -12,6 +10,7 @@ if(isset($_SESSION["month"])){
   $monthChoosen = date('Y-m', strtotime("-1 months"));
 }
 $currentMonth = date('Y-m');
+$lastMonth = date('Y-m', strtotime("-1 months"));
 
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
@@ -20,22 +19,22 @@ function toLoginPage (){
 
   if (isset($_POST["login"])){
 
-    $xuser = new User();
-    $xgroup = new Group();
+    $xUser = new User();
+    $xGroup = new Group();
 
     $email = $_POST["email"];
     $password = $_POST["password"];
     
     //Check if that user exists and data ir correct
-      if ($xuser->checkLogin($email,$password)){
+      if ($xUser->checkLogin($email,$password)){
 
       //Push succes message, that all is ok
            $resMessage = array(
            "status" => "alert-success",
            "message" => "You are logged in!");
-           $groupMaster = $xgroup->checkGroupMaster($email);
-           $adminGroupName = $xgroup->getAdminGroupName($email);
-		       $groupName = $xgroup->getGroupNameForSession($email);
+           $groupMaster = $xGroup->checkGroupMaster($email);
+           $adminGroupName = $xGroup->getAdminGroupName($email);
+		       $groupName = $xGroup->getGroupNameForSession($email);
 
            if ($groupMaster){
               $_SESSION["groupMaster"] = '1';
@@ -60,8 +59,9 @@ function toLoginPage (){
 
       if (isset($_POST["register"])){
 
-          $xuser = new User();
-          $xgroup = new Group();
+          $xUser = new User();
+          $xGroup = new Group();
+          $xWallet = new Wallet();
 
           $name = $_POST['name'];
           $email = $_POST['email'];
@@ -82,20 +82,23 @@ function toLoginPage (){
       if ($password == $password_Confirm){
 
         //Check if email is available
-        if ($xuser->checkEmailAvailability($email)){
+        if ($xUser->checkEmailAvailability($email)){
           
           //Check if POST groupname is not empty
             if (!EMPTY($groupName)){
 
               //Check groups name availability
-                if ($xgroup->checkGroupAvailability($groupName)){           
+                if ($xGroup->checkGroupAvailability($groupName)){           
 
                    //Get new group value for link
-                  $groupValue = $xgroup->getGroupValue();
+                  $groupValue = $xGroup->getGroupValue();
 
                    //If true then make new user and new group
-                   $xuser->createUser($name, $email, $password, $groupName);
-                   $xgroup->createNewGroup($groupName, $groupValue, $email);
+                   $userWallet = 0;
+                   $xUser->createUser($name, $email, $password, $groupName);
+                   $xGroup->createNewGroup($groupName, $groupValue, $email);
+                   $xWallet->createNewWallet($email, $userWallet);
+
               
                    //Push array with success message and redirect to /login page
                    header("Refresh: 2; URL=/login");
@@ -113,14 +116,17 @@ function toLoginPage (){
                           } else {
 
                             // Check if DB have any records with dbValue
-                            if ($xgroup->checkGroupValueExistance($groupValue)){
+                            if ($xGroup->checkGroupValueExistance($groupValue)){
 
                             // Get groups name
-                             $groupName = $xgroup->getGroupName($groupValue, $groupName);
+                            $groupName = $xGroup->getGroupName($groupValue, $groupName);
+                            $userWallet = $xGroup->getWalletAmount($groupValue);
 
                             //Creating user and new group
-                            $xuser->createUser($name, $email, $password, $groupName);
-                            $xgroup->joinExistingGroup($groupName, $groupValue, $email);
+                            $xUser->createUser($name, $email, $password, $groupName);
+                            $xGroup->joinExistingGroup($groupName, $groupValue, $email);
+                            $xWallet->createNewWallet($email, $userWallet);
+
 
                             //Push array with success message and redirect to /login page
                             header("Refresh: 2; URL=/login");

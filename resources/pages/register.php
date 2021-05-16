@@ -2,8 +2,8 @@
 <div class="card-body">
 <form method="POST" name="register">
 <div class="form-group">
-    <label for="text">Name:</label>
-    <input type="text" class="form-control" placeholder="Enter your name and surname" name="name" required>
+    <label for="text">Name and surname:</label>
+    <input type="text" class="form-control" placeholder="John Doe" name="name" required>
   </div>
   <div class="form-group">
     <label for="email">Email address:</label>
@@ -24,14 +24,14 @@ if ($regKey == "/register") {
   
 ?>     
 <label for="group">Create new Group</label>
-<input type="text" class="form-control" placeholder="Create new group" name="groupName" >
+<input type="text" class="form-control" placeholder="Bizzy Blasters" name="groupName" >
 <?php
 } else {   
   echo "<input type='hidden' class='form-control' placeholder='".$regKey."' name= 'groupValue' value='".$regKey."' readonly>";
 }
 ?>
 </div>
-  <button type="submit" class="btn btn-dark" name="register">Submit</button>
+  <button type="submit" class="btn btn-dark" name="register">Register</button>
   <a href="/login" class="btn btn-dark">Have account ? Login</a>
 
 </form>

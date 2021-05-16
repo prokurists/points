@@ -47,6 +47,25 @@ class Group
           $db->closeDB();
         }
 
+        public function getWalletAmount($groupValue){
+          $db = new dbConnect();
+          $connectQr = $db->connectDB();
+  
+          //Selecting name where groupvalue is exual to invitelinkvalue
+          $sql = "SELECT walletAmount FROM user_group WHERE value='".$groupValue."' AND admin=email";
+          $result = $connectQr->query($sql);
+          
+          //If we got groupvalue then we are getting groupname
+          if ($result->num_rows > 0) {
+            // output data of each row
+            $row = $result->fetch_assoc();
+            return $row["walletAmount"];
+            } else {
+            return false;        
+            }   
+            $db->closeDB();
+        }
+
             //If we got invite link(groupvalue) then we are getting groupname
     public function getAdminGroupName ($email) {
 

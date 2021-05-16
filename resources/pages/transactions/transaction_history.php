@@ -1,9 +1,7 @@
-<?php $currentMonth = date('Y-m', strtotime("-1 months"));?>
-
 <div class="container w80">
 <form action="/transaction_history" method="POST">
   <label for="datepicker">Choose data month:</label>
-  <input type="month" id="datepicker" max="<?php echo $currentMonth; ?>" value="<?php echo $monthChoosen; ?>" name="monthChoosen">
+  <input type="month" id="datepicker" max="<?php echo date('Y-m', strtotime("-1 months")); ?>" value="<?php echo $monthChoosen; ?>" name="monthChoosen">
   <input type="submit" name="setMonth">
 </form>
 

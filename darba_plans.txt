@@ -1,6 +1,6 @@
 Vizuāli
-    1. Ievietot krāsu paletes/background
-    2. Pielāgot izmērus datorā/telefonā
+    1. Ievietot krāsu paletes/background CHECK
+    2. Pielāgot izmērus datorā/telefonā CHECK
     3. Pielāgot formas pie krāsu paletēm, lai nekas nekur nespīd cauri
     4. Atstāt tikai kļūdas paziņojumus un tos integret formā.
     5. Uztaisīt formu pievilcīgaku/caurspīdīgaku.
