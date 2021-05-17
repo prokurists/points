@@ -1,7 +1,7 @@
 <br>
 
 <?php
-
+$showResults = 0;
 if ($transactionToCounter < 3){
   $transactionToRow = $transactionToCounter;
 }

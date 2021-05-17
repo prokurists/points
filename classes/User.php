@@ -251,18 +251,18 @@ $db->closeDB();
 
     }
 
-    public function getTopUser($groupName){
+    public function getAllUsers($groupName){
 
         $db = new dbConnect();
         $connectQr = $db->connectDB();
         $topUserArray = array();
 
-        $sql = "SELECT * FROM users WHERE user_group='".$groupName."' ORDER BY gift DESC";
+        $sql = "SELECT * FROM users WHERE user_group='".$groupName."'";
         $result = $connectQr->query($sql);
 
         if ($result->num_rows > 0){
             while($row = mysqli_fetch_assoc($result)) {
-                array_push($topUserArray, array($row["name"], $row["gift"], $row["email"]));
+                array_push($topUserArray, $row["email"]);
             }
         }
         return $topUserArray;
@@ -270,70 +270,7 @@ $db->closeDB();
 
     }
 
-    public function setUsersWalletGift($emailFrom, $emailTo, $value){
-
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
-
-        $sqlPlus = "UPDATE users SET wallet = wallet + '".$value."' WHERE email = '".$emailFrom."'";
-        $sqlMinus = "UPDATE users SET gift = gift - '".$value."' WHERE email = '".$emailTo."'";
-
-        if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
-            return true;
-        } else {
-                return false;
-            }
-            $db->closeDB();
-
-    }
-
-    public function addUsersWalletGift($emailFrom, $emailTo, $value){
-
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
-
-        $sql = "SELECT * FROM users WHERE email = '".$emailFrom."'";
-        $result = $connectQr->query($sql);
-
-        if ($result->num_rows > 0){
-            while ($row = $result->fetch_assoc()){
-                if ($row["wallet"] > 0){
-                    $sqlPlus = "UPDATE users SET wallet = wallet - '".$value."' WHERE email = '".$emailFrom."'";
-                    $sqlMinus = "UPDATE users SET gift = gift + '".$value."' WHERE email = '".$emailTo."'";
-            
-                    if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
-                        return true;
-                    } else {
-                            return false;
-                        }
-                } else {
-                    return false;
-                }
-            }
-        }
 
 
-            $db->closeDB();
-
-    }
-
-    public function checkUsersBallance($emailFrom){
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
-
-        $sql = "SELECT * FROM users WHERE email = '".$emailFrom."'";
-        $result = $connectQr->query($sql);
-
-        if ($result->num_rows > 0){
-            while ($row = $result->fetch_assoc()){
-                if ($row["wallet"] > 0){
-                    return true;
-    } else {
-        return false;
-    }
-            }
-            $db->closeDB();
-        }
-}
 }
 ?> 

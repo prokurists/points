@@ -6,10 +6,7 @@ if ($xTotalSum){
   $totalSumText = "<div class='card'><div class='card-body'>Congratulations! You have received " . $xTotalSum. " POINTS this month!</div></div><br>";
 } 
 
-if ($transactionFromCounter < 3){
-  $transactionFromRow = $transactionFromCounter;
-  
-}
+
 
 if (!EMPTY($transactionFrom)){
   echo "<span class='badge badge-secondary'>Transactions recieved: </span><br>";

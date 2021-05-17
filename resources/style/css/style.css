@@ -1,22 +1,10 @@
 body {
   width: 100%;
-  min-height: 800px;
-  margin: auto;
-  background-image: linear-gradient(
-    to right top,
-    #e96e39,
-    #c84d4f,
-    #993a57,
-    #642f4f,
-    #352339,
-    #34213a,
-    #331f3c,
-    #321d3d,
-    #641e54,
-    #9d0a58,
-    #d10048,
-    #f82323
-  );
+  height: 100%;
+  margin: 0;  
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+
 }
 
 .w80 {
@@ -49,6 +37,7 @@ body {
 
 .container-fluid {
   padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .greetings {
@@ -56,6 +45,7 @@ body {
 }
 
 @media only screen and (max-width: 900px) {
+
   .w80 {
     width: 100%;
     margin: auto;

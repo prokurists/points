@@ -165,6 +165,7 @@ function toLoginPage (){
       if(isset($_POST["new_transaction"]) && ($_SESSION["loggedIn"] == 1)){
         $newTransaction = new Transaction();
         $xUser = new User();
+      	$xWallet = new Wallet();
 
         $emailTo = $_POST["emailto"];
         $emailFrom = $_SESSION["email"];
@@ -172,17 +173,17 @@ function toLoginPage (){
         $value = $_POST["quantity"];
         
 
-        if ($xUser->checkUsersBallance($emailFrom)){
+        if ($xWallet->checkUsersBallance($emailFrom)){
           $newTransaction->createNewTransaction($emailFrom, $emailTo, $transaction, $value, $_SESSION["groupName"]);
+          $xWallet->addUsersWalletGift($emailFrom,$emailTo, $value);
         } else {
           $resMessage = array(
             "status" => "alert-danger",
-            "message" => "You have no POINS LEFT!");
+            "message" => "You have no POINTS LEFT!");
         }
 
 
     }
-
       //Group Admin is reseting Wallet value
       if (isset($_POST["resetWallet"]) && ($_SESSION["groupMaster"] == 1) ){
         $xuser = new User();
@@ -229,17 +230,10 @@ function toLoginPage (){
             "message" => "You cant look current month transactions!");
                   } else {
         $_SESSION["month"] = $_POST["monthChoosen"];
-        header("Refresh:0; URL=/transaction_history");}
+        header("Refresh:0; URL=/profile");}
       }
       
-      if (isset($_SESSION["email"])){
 
-        $xUser = new User();
-        $xGroup = new Group();
-        $showResults = $xGroup->showGroupResults($_SESSION["groupName"]);
-        
-
-      }
 
 
   

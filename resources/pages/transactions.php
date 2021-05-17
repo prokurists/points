@@ -3,8 +3,7 @@
 if (isset($_SESSION["email"])){
 
   $userView = new User();
-  $userStartPoints = $userView->userStartingPoints();
-  $userGainedPoints = $userView->userGainedPoints();
+
 
   $transactionView = new Transaction();
   $transactionTo = $transactionView->showToTransactions($_SESSION["email"], $currentMonth);

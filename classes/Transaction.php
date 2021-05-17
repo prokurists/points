@@ -6,14 +6,7 @@ class Transaction{
 
         $db = new dbConnect();
         $connectQr = $db->connectDB();
-
-        //Inserting into group new group record
-
-        $xUser = new User();
-        $addUserAmount = $xUser->addUsersWalletGift($emailFrom,$emailTo, $value);
-
-       if ($addUserAmount) {
-
+        
         $emailFrom = $this->test_input($emailFrom);
         $emailTo = $this->test_input($emailTo);
         $transaction = $this->test_input($transaction);
@@ -29,7 +22,7 @@ class Transaction{
     
                     return false;
                 }
-            }
+            
             $db->closeDB();
     }
 
@@ -126,6 +119,22 @@ class Transaction{
         $db->closeDB();
 
 
+    }
+
+    public function getTotalPoints($email, $month){
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+        $points = 0;
+        $sql = "SELECT value FROM user_transactions WHERE emailTo = '".$email."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$month."'";
+        $result = $connectQr->query($sql);
+
+        if($result->num_rows > 0 ){
+            while($row = $result->fetch_assoc()){
+                $points+=$row["value"];
+            }
+            return $points;
+
+        }
     }
 
     public function getTotalValue($email, $monthChoosen){ 

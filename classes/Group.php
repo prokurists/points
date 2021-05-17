@@ -268,24 +268,7 @@ class Group
 
   }
 
-  public function showGroupResults($groupName){
-    $db = new dbConnect();
-    $connectQr = $db->connectDB();
 
-    $sql = "SELECT showResults FROM user_group WHERE name='".$groupName."' AND admin=email"; 
-    $result = $connectQr->query($sql);
-    
-    if($result->num_rows > 0){
-      while($row = $result->fetch_assoc()){
-
-      return $row["showResults"];
-      }
-    } else {
-      return 0;
-    }
-    $db->closeDB();
-
-  }
 
 
   
