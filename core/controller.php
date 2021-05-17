@@ -17,6 +17,16 @@ function toLoginPage (){
 
 }
 
+if (date("d") === 1){
+  $xWallet = new Wallet();
+
+  $groupWalletValue = $xGroup->getGroupWallet();
+  $xWallet->setGroupWallet($groupWalletValue);
+}
+$xGroup = new Group();
+
+print_r($xGroup->getGroupWallet());
+
   if (isset($_POST["login"])){
 
     $xUser = new User();

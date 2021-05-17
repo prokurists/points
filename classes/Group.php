@@ -219,6 +219,22 @@ class Group
       $db->closeDB();
   }
 
+  public function getGroupWallet(){
+    $db = new dbConnect();
+    $connectQr = $db->connectDB();
+    
+    $groupArray = array();
+
+    $sql = "SELECT name, walletAmount FROM user_group WHERE admin=email";
+    $result = $connectQr->query($sql);
+
+    if ($result->num_rows >0){
+      while($row = $result->fetch_assoc()){
+        array_push($groupArray, array($row["name"], $row["walletAmount"]));
+      }
+    } return $groupArray;
+  }
+
   public function showGroupUsersList(){
 
         $db = new dbConnect();
@@ -238,35 +254,7 @@ class Group
     }
   }
 
-  public function setGroupResults($email){
 
-    $db = new dbConnect();
-    $connectQr = $db->connectDB();
-
-    $sql = "SELECT showResults FROM user_group WHERE admin='".$email."'"; 
-    $result = $connectQr->query($sql);
-
-    if($result->num_rows > 0){
-      while($row = $result->fetch_assoc()){
-        if ($row["showResults"] === '0'){
-          $sqlEnable = "UPDATE user_group SET showResults='1' WHERE admin='".$email."'";
-          if ($connectQr->query($sqlEnable) === TRUE) {
-            return true;
-          }
-           } else {
-            $sqlDisable = "UPDATE user_group SET showResults='0' WHERE admin='".$email."'";
-            if ($connectQr->query($sqlDisable) === TRUE) {
-              return true;
-            }
-          }
-      }
-    } else {
-      return false;
-    }      
-    
-          $db->closeDB();
-
-  }
 
 
 
