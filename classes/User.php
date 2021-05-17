@@ -210,12 +210,12 @@ $db->closeDB();
         $db = new dbConnect();
         $connectQr = $db->connectDB();
 
-        $sql = "SELECT wallet FROM users WHERE user_group = '".$_SESSION["adminGroupName"]."'";
+        $sql = "SELECT walletAmount FROM user_group WHERE name = '".$_SESSION["adminGroupName"]."'";
         $result = $connectQr->query($sql);
 
         if ($result->num_rows > 0){
             $row = $result->fetch_assoc();
-            return (trim($row["wallet"]));
+            return (trim($row["walletAmount"]));
         }
         $db->closeDB();
 

@@ -25,7 +25,7 @@ if (date("d") === 1){
 }
 $xGroup = new Group();
 
-print_r($xGroup->getGroupWallet());
+print_r($xGroup->getGroupWallet()[0][0]);
 
   if (isset($_POST["login"])){
 

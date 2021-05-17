@@ -4,12 +4,8 @@
 
     $groupView = new Group();
     $usersView = new User();
-    $usersList = array();
     
-    $usersEmailList = $groupView->showGroupUsersList();
-    foreach ($usersEmailList as $value){
-        array_push($usersList, $usersView->getAllUsersData($value))  ;
-    }
+
     
     
     $vall = $usersView->showWalletAmount();
@@ -18,37 +14,7 @@
 
     ?>
     <div class="container w80">
-    <div class="table-responsive">
 
-    <table class="table table-hover">
-        <thead class='thead-dark'>
-          <tr>
-            <th scope='col'>Name</th>
-            <th scope='col'>Email</th>
-            <th scope='col'>Wallet</th>
-            <th scope='col'>Gift</th>
-          </tr>
-        </thead><tbody>
-<?php
-for ($row = 0; $row < count($usersList); $row++) {
-    $usr = 0;
-    $usr+1;
-    echo "<tr>";
-
-    for ($col = 0; $col < 4; $col++) {
-        
-      echo "<td>".$usersList[$row][$usr][$col]."</td>";
-
-
-    }
-    echo "</tr>";
-  
-}
-
- ?>
-
-        </tbody>
-</table></div>
 
 <hr>
 <label for="linkreg">Your group invite link:</label>
