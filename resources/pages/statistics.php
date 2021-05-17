@@ -10,8 +10,8 @@
 
   for ($row = 0; $row < count($usersList); $row++) {
       $points = 0;
-      $transactionUsersList = $transactions->getTopUserTransactions($usersList[$row], $currentMonth);
-      $transactionTotalPoints = $transactions->getTotalPoints($usersList[$row], $currentMonth);
+      $transactionUsersList = $transactions->getTopUserTransactions($usersList[$row], $lastMonth);
+      $transactionTotalPoints = $transactions->getTotalPoints($usersList[$row], $lastMonth);
 
       echo "
       <div class='card'>

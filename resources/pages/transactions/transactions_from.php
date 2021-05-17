@@ -3,13 +3,12 @@
 <?php
 $xTotalSum = $xTransaction->getTotalValue($_SESSION["email"], $monthChoosen);
 if ($xTotalSum){
-  $totalSumText = "<div class='card'><div class='card-body'>Congratulations! You have received " . $xTotalSum. " POINTS this month!</div></div><br>";
+  $totalSumText = "<div class='card'><div class='card-body'>Congratulations! You have received " . $xTotalSum. " POINTS in ".date("F", strtotime($monthChoosen))."!</div></div><br>";
 } 
 
 
 
 if (!EMPTY($transactionFrom)){
-  echo "<span class='badge badge-secondary'>Transactions recieved: </span><br>";
 echo $totalSumText;
 for ($row = 0; $row < $transactionFromRow; $row++) {
   echo "<div class='card'>
@@ -45,9 +44,9 @@ for ($row = 3; $row < $transactionFromCounter; $row++) {
 echo "</div>";
 function getTotalAmount($totalAmount){
   if ($totalAmount > 1){
-    echo "Congratulations! you got".$totalAmount." POINTS this month!";
+    echo "Congratulations! you got".$totalAmount." POINTS at ".date("F", strtotime($monthChoosen))."";
   } else {
-    echo "You got no points this month!";
+    echo "You got no points at ".date("F", strtotime($monthChoosen))."";
   }
 }
 if ($transactionFromCounter > 3){
@@ -59,7 +58,7 @@ echo "
   echo "<div class='card'>
 
   <div class='card-body'>
-      <p>Unfortunately, there are no ratings this month</p>
+      <p>Unfortunately, there are no ratings at ".date("F", strtotime($monthChoosen))."</p>
   </div>
 </div>";
 }
