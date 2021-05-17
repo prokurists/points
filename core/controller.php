@@ -16,16 +16,17 @@ function toLoginPage (){
   header("Refresh: 0; URL=/login");
 
 }
-
-if (date("d") === 1){
+if ((date("d") == 17) AND (date("h:i") == '09:14')){
   $xWallet = new Wallet();
+  $xGroup = new Group();
 
   $groupWalletValue = $xGroup->getGroupWallet();
-  $xWallet->setGroupWallet($groupWalletValue);
-}
-$xGroup = new Group();
 
-print_r($xGroup->getGroupWallet()[0][0]);
+  for ($row = 0; $row < count($groupWalletValue); $row++) {
+    $xWallet->setGroupWallet($groupWalletValue[$row][0], $groupWalletValue[$row][1]);
+      }
+}
+
 
   if (isset($_POST["login"])){
 
@@ -107,7 +108,7 @@ print_r($xGroup->getGroupWallet()[0][0]);
                    $userWallet = 0;
                    $xUser->createUser($name, $email, $password, $groupName);
                    $xGroup->createNewGroup($groupName, $groupValue, $email);
-                   $xWallet->createNewWallet($email, $userWallet);
+                   $xWallet->createNewWallet($email, $userWallet, $groupName);
 
               
                    //Push array with success message and redirect to /login page
@@ -135,7 +136,7 @@ print_r($xGroup->getGroupWallet()[0][0]);
                             //Creating user and new group
                             $xUser->createUser($name, $email, $password, $groupName);
                             $xGroup->joinExistingGroup($groupName, $groupValue, $email);
-                            $xWallet->createNewWallet($email, $userWallet);
+                            $xWallet->createNewWallet($email, $userWallet, $groupName);
 
 
                             //Push array with success message and redirect to /login page
@@ -219,10 +220,10 @@ print_r($xGroup->getGroupWallet()[0][0]);
         $emailFrom = $_SESSION["email"];
         $emailTo = $_POST["emailTo"];
 
-        $xUser = new User();
+        $xWallet = new Wallet();
 
         
-        $xUser->setUsersWalletGift($emailFrom, $emailTo, $transactionAmount);
+        $xWallet->setUsersWalletGift($emailFrom, $emailTo, $transactionAmount);
 
       }
       

@@ -1,14 +1,14 @@
 <?php
     class Wallet{
         
-        public function createNewWallet($email, $userWallet){
+        public function createNewWallet($email, $userWallet, $groupName){
                 //New connection
                 $db = new dbConnect();
                 $connectQr = $db->connectDB();
 
                 //Insert into DB new user
-                 $sql = "INSERT INTO user_wallet (email, wallet)
-                VALUES ('".$email."', '".$userWallet."')";
+                 $sql = "INSERT INTO user_wallet (email, wallet, user_group)
+                VALUES ('".$email."', '".$userWallet."', '".$groupName."')";
 
             if (mysqli_query($connectQr, $sql)) {
                       return true;
@@ -60,8 +60,8 @@ public function setUsersWalletGift($emailFrom, $emailTo, $value){
     $db = new dbConnect();
     $connectQr = $db->connectDB();
 
-    $sqlPlus = "UPDATE users SET wallet = wallet + '".$value."' WHERE email = '".$emailFrom."'";
-    $sqlMinus = "UPDATE users SET gift = gift - '".$value."' WHERE email = '".$emailTo."'";
+    $sqlPlus = "UPDATE user_wallet SET wallet = wallet + '".$value."' WHERE email = '".$emailFrom."'";
+    $sqlMinus = "UPDATE user_wallet SET gift = gift - '".$value."' WHERE email = '".$emailTo."'";
 
     if (($connectQr->query($sqlMinus) === TRUE) && ($connectQr->query($sqlPlus) === TRUE)) {
         return true;
@@ -69,6 +69,20 @@ public function setUsersWalletGift($emailFrom, $emailTo, $value){
             return false;
         }
         $db->closeDB();
+
+}
+
+public function setGroupWallet($name, $value){
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        $sql = "UPDATE user_wallet SET wallet = '".$value."' WHERE user_group = '".$name."'";
+
+        if ($connectQr->query($sql)){
+            return true;
+        } else {
+            return false;
+        }
 
 }
 
