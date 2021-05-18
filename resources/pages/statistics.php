@@ -16,17 +16,18 @@
       $points = 0;
       $transactionUsersList = $transactions->getTopUserTransactions($usersList[$row], $lastMonth);
       $transactionTotalPoints = $transactions->getTotalPoints($usersList[$row], $lastMonth);
-
+      
+      if ($transactionTotalPoints > 0){
       echo "
       <div class='card'>
       <div class='card-body'>
       <div class='row'>
-      <div class='col-sm-4 center'>".$users->getUserName($usersList[$row])."<br>
-      <h1 center>".$transactionTotalPoints."</h1>
+      <div class='col-sm-4 text-center'>".$users->getUserName($usersList[$row])."<br>
+      <h1>".$transactionTotalPoints."</h1>
       </div><div class='col-sm'><ul class='list-group list-group-flush'>";
       for ($col = 0; $col < count($transactionUsersList); $col++){
       echo "<li class='list-group-item'>".$transactionUsersList[$col]."</li>";
-
+      }
     }
 
 
