@@ -2,18 +2,14 @@
 //Allow to see Group info and set values if you are group master
     if (isset($_SESSION["groupMaster"])){
 
-    $groupView = new Group();
-    $usersView = new User();
-    
-
-    
-    
-    $vall = $usersView->showWalletAmount();
-    $linkReg = $groupView->getGroupExValue($_SESSION["email"]);
+    $xGroup = new Group();
+         
+    $vall = $xGroup->showWalletAmount();
+    $linkReg = $xGroup->getGroupExValue($_SESSION["email"]);
 
 
     ?>
-    <div class="container w80">
+    <div class="container w80 card p-5">
 
 
 <hr>
@@ -26,30 +22,6 @@
   <input type="number" id="quantity" value="<?php echo $vall; ?>" name="quantity" min="10" max="100">
   <input type="submit" class="btn btn-dark" value="setWallet" name="setWallet">
 </form>
-<HR>
-<div class="row">
-
-
-<div class="col">
-<form action="<?php echo $request; ?>" method="POST">
-<button type="submit" class="btn btn-dark btn-block" name="resetGift">Reset gift</button>
-</form>
-</div>
-
-<div class="col">
-<form action="<?php echo $request; ?>" method="POST">
-<button type="submit" class="btn btn-dark btn-block" name="resetWallet" onclick="alert('Are you sure want to reset wallet?')">Reset wallet</button>
-</form>
-</div>
-<div class="col">
-<form action="<?php echo $request; ?>" method="POST">
-<button type="submit" class="btn btn-dark btn-block" name="resetTransaction">Reset transactions</button>
-</form>
-
-
-
-
-</div>
 </div>
 </div>
 <?php 

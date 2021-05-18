@@ -71,7 +71,7 @@ if ($transactionToCounter > 3){
   echo "
   <div class='card'>
   <div class='card-header'>
-  <p>No rates at this month.</p>
+  <p>You have not rated anyone at ".date("F", strtotime($currentMonth))."</p>
   </div></div>
   ";
 

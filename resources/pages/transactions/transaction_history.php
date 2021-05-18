@@ -1,5 +1,5 @@
 <div class="container w80">
-<div class="card p5">
+<div class="card p-5">
 <form action="<?php echo $request; ?>" method="POST">
   <label for="datepicker">Choose data month:</label>
   <input type="month" id="datepicker" max="<?php echo date('Y-m', strtotime("-1 months")); ?>" value="<?php echo $monthChoosen; ?>" name="monthChoosen">

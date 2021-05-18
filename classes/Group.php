@@ -235,6 +235,22 @@ class Group
     } return $groupArray;
   }
 
+  public function showWalletAmount(){
+
+    $db = new dbConnect();
+    $connectQr = $db->connectDB();
+
+    $sql = "SELECT walletAmount FROM user_group WHERE name = '".$_SESSION["adminGroupName"]."'";
+    $result = $connectQr->query($sql);
+
+    if ($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        return (trim($row["walletAmount"]));
+    }
+    $db->closeDB();
+
+}
+
   public function showGroupUsersList(){
 
         $db = new dbConnect();

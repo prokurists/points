@@ -166,11 +166,11 @@ if ((date("d") == 17) AND (date("h:i") == '09:14')){
                                          }
       //Group Admin is setting wallet value for all group users
       if (isset($_POST["setWallet"]) && ($_SESSION["groupMaster"] == 1) ){
-        $xuser = new User();
+        $xWallet = new Wallet();
 
         $quantity = $_POST["quantity"];
         $groupName = $_SESSION["adminGroupName"];
-        $xuser->setWallet($quantity, $_SESSION["adminGroupName"]); }
+        $xWallet->setWallet($quantity, $_SESSION["adminGroupName"]); }
       
       //If you are logged you are adding new transaction
       if(isset($_POST["new_transaction"]) && ($_SESSION["loggedIn"] == 1)){

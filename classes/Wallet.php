@@ -116,6 +116,20 @@ public function addUsersWalletGift($emailFrom, $emailTo, $value){
 
 }
 
+public function setWallet($quantity, $groupName){
+    $db = new dbConnect();
+    $connectQr = $db->connectDB();
+
+    $sql = "UPDATE user_wallet SET wallet='".$quantity."' WHERE user_group='".$groupName."'";
+    if ($connectQr->query($sql) === TRUE) {
+        return true;
+    } else {
+        return false;
+    }
+    $db->closeDB();
+
+}
+
     }
 
 

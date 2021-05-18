@@ -93,23 +93,6 @@ class User  {
         return $data;
       }
 
-    public function setWallet($quantity, $groupName){
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
-
-        $sql = "UPDATE users SET wallet='".$quantity."' WHERE user_group='".$groupName."'";
-        if ($connectQr->query($sql) === TRUE) {
-            return true;
-        } else {
-            return false;
-        }
-        $db->closeDB();
-
-    }
-
-
-
-
     public function userGainedPoints(){
         $db = new dbConnect();
         $connectQr = $db->connectDB();
@@ -205,51 +188,7 @@ $db->closeDB();
 
     }
 
-    public function showWalletAmount(){
 
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
-
-        $sql = "SELECT walletAmount FROM user_group WHERE name = '".$_SESSION["adminGroupName"]."'";
-        $result = $connectQr->query($sql);
-
-        if ($result->num_rows > 0){
-            $row = $result->fetch_assoc();
-            return (trim($row["walletAmount"]));
-        }
-        $db->closeDB();
-
-    }
-
-    public function resetWallet($groupName){
-
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
-
-        $sql = "UPDATE users SET wallet = 0 WHERE user_group='".$groupName."'";
-        if ($connectQr->query($sql) === TRUE) {
-            return true;
-        } else {
-            return false;
-        }
-        $db->closeDB();
-
-    }
-
-    public function resetGift($groupName){
-
-        $db = new dbConnect();
-        $connectQr = $db->connectDB();
-
-        $sql = "UPDATE users SET gift = 0 WHERE user_group='".$groupName."'";
-        if ($connectQr->query($sql) === TRUE) {
-            return true;
-        } else {
-            return false;
-        }
-        $db->closeDB();
-
-    }
 
     public function getAllUsers($groupName){
 
@@ -269,8 +208,5 @@ $db->closeDB();
         $db->closeDB();
 
     }
-
-
-
 }
 ?> 

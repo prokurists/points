@@ -1,5 +1,6 @@
 <div class="card w80">
 <div class="card-body">
+<?php require  'resources/errorMsg.php'; ?>
 <form method="POST" name="register">
 <div class="form-group">
     <label for="text">Name and surname:</label>
