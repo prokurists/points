@@ -120,7 +120,7 @@ public function setWallet($quantity, $groupName){
     $db = new dbConnect();
     $connectQr = $db->connectDB();
 
-    $sql = "UPDATE user_wallet SET wallet='".$quantity."' WHERE user_group='".$groupName."'";
+    $sql = "UPDATE user_group SET walletAmount='".$quantity."' WHERE name='".$groupName."' AND admin=email";
     if ($connectQr->query($sql) === TRUE) {
         return true;
     } else {
@@ -128,6 +128,23 @@ public function setWallet($quantity, $groupName){
     }
     $db->closeDB();
 
+}
+
+public function showAllUserWallet($groupName){
+    $db = new dbConnect();
+    $connectQr = $db->connectDB();
+
+    $usersArray = array();
+
+    $sql = "SELECT * FROM user_wallet WHERE user_group = '".$groupName."'";
+    $result=$connectQr->query($sql);
+
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            array_push($usersArray, array($row["email"], $row["wallet"], $row["gift"]));
+        }
+    }
+    return $usersArray;
 }
 
     }
