@@ -7,10 +7,12 @@ $regKey = @end(explode("?key=",$_SERVER['REQUEST_URI']));
 if(isset($_SESSION["month"])){
   $monthChoosen = $_SESSION["month"];
 } else{
-  $monthChoosen = date('Y-m', strtotime("-1 months"));
+  $monthChoosen = date('Y-m', strtotime("-31 days"));
 }
 $currentMonth = date('Y-m');
-$lastMonth = date('Y-m', strtotime("-1 months"));
+$lastMonth = date('Y-m', strtotime("-31 days"));
+
+
 
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
