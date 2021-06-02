@@ -16,6 +16,6 @@
     <div class="invalid-feedback">Please fill out this field.</div>
   </div>
   <button type="submit" name="login" class="btn btn-dark">Login</button>
-  <a class="btn btn-dark" href="/register">Create new account</a>
+  <a class="btn btn-dark" href="/register/">Create new account</a>
 </form>
 </div></div>

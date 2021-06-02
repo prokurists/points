@@ -1,10 +1,5 @@
 <?php 
-
-    if (isset($_POST["data"])){
-		echo $_POST["email"];
-		exit;
-
-    };
+include ("controller.php");
 ?>
 
 <!DOCTYPE html>
@@ -53,37 +48,7 @@
   </div>
   <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 </form>
-
-	<script>
-		$(document).ready(function() {
-
-			$("#submit").click(function() {
-
-				var email = $("#email").val();
-				var password = $("#password").val();
-				var password_conf = $("#password_conf").val();
-
-				$.ajax({
-					type: "POST",
-					data: {	
-						email: email,
-						password: password,
-						password_conf: password_conf
-					},
-					cache: false,
-					success: function(data) {
-						alert(data);
-					},
-					error: function(xhr, status, error) {
-						console.error(xhr);
-					}
-				});
-				
-			});
-
-		});
-	</script>
-
+<script src="app.js"></script>
 </body>
 </html>
 

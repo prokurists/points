@@ -32,8 +32,6 @@ switch ($request) {
 
         case '/register'.'/'.$regKey:
             require 'resources/pages/register.php';
-            echo $_SERVER['REQUEST_URI'];
-
             break;
 
         default :

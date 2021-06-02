@@ -4,6 +4,8 @@
 4. GALVENE SELECT data (izejošie darījumi) + ar dzēst ar javascript
 5. PROFILS SELECT DATA onSELECT JAVASCRIPT
 6. lastMONTH fix - CHECK!!!
+6. Register/routing problem - CHECK!!!
 7. Atjaunot paroli funkcija
 8. Nomainit paroli funkcija
+9. QA REST API
 9. Sagatavot dokumentāciju, kad viss done

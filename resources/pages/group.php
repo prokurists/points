@@ -39,7 +39,7 @@
 <hr>
 <label for="linkreg">Your group invite link:</label>
 
-    <input type="text" name="linkreg" class="form-control form-control" value="https://<?php echo $_SERVER['HTTP_HOST']."/register?key=". $linkReg; ?>">
+    <input type="text" name="linkreg" class="form-control form-control" value="https://<?php echo $_SERVER['HTTP_HOST']."/register/". $linkReg; ?>">
     <hr>
     <form action="<?php echo $request;?>" method="POST" name="setWallet">
   <label for="quantity">Your group wallet value:</label>

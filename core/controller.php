@@ -3,14 +3,15 @@
 $request = $_SERVER['REQUEST_URI'];
 $regKey = @end(explode("/",$_SERVER['REQUEST_URI']));
 
+$currentMonth = date('Y-m');
+$lastMonth = date("Y-m",mktime(0,0,0,date("m", strtotime($currentMonth))-1,1,date("Y", strtotime($currentMonth))));
 
 if(isset($_SESSION["month"])){
   $monthChoosen = $_SESSION["month"];
 } else{
-  $monthChoosen = date('Y-m', strtotime("-31 days"));
+  $monthChoosen = $lastMonth;
 }
-$currentMonth = date('Y-m');
-$lastMonth = date("Y-m",mktime(0,0,0,date("m", strtotime($currentMonth))-1,1,date("Y", strtotime($currentMonth))));
+
 
 
 
@@ -69,10 +70,10 @@ if ((date("d") == 01) AND (date("h:i") == '00:00')){
             "status" => "alert-danger",
             "message" => "Email or password is WRONG!");
 
-      }
-    }  
+      };
+    };  
 
-      if (isset($_POST["register"])){
+      if (isset($_POST["registerJ"])){
 
           $xUser = new User();
           $xGroup = new Group();
@@ -116,16 +117,11 @@ if ((date("d") == 01) AND (date("h:i") == '00:00')){
 
               
                    //Push array with success message and redirect to /login page
-                   header("Refresh: 2; URL=/login");
-                   $resMessage = array(
-                   "status" => "alert-success",
-                   "message" => "Registration sucessfull with new GROUP!");  
+                    echo "Registration completed"; exit;
 
                       } else{
                          // Push alert message that group is taken!
-                        $resMessage = array(
-                        "status" => "alert-danger",
-                        "message" => "Group TAKEN!");}
+                        echo "Group name is taken!"; exit; }
 
                           //Anotherwise groupValue is set
                           } else {
@@ -144,29 +140,20 @@ if ((date("d") == 01) AND (date("h:i") == '00:00')){
 
 
                             //Push array with success message and redirect to /login page
-                            header("Refresh: 2; URL=/login");
-                            $resMessage = array(
-                            "status" => "alert-success",
-                            "message" => "Registration successfull with existing GROUP!");            }
+                            echo "Registration completed"; exit;            }
                             //No value for dbVlaue in DB
                                 else {
-                                  $resMessage = array(
-                                  "status" => "alert-danger",
-                                  "message" => "Invalid invite link!"); }}
+                                  echo "Invalid invite link!"; exit; }}
     
                                  } else {
 
                                    //Push alert message that email is taken!
-                                   $resMessage = array(
-                                   "status" => "alert-danger",
-                                   "message" => "Email taken!");}
+                                   echo "Email taken!"; die;}
     
                                       } else {
 
                                          //Push alert message that password do not match!
-                                         $resMessage = array(
-                                         "status" => "alert-danger",
-                                         "message" => "Password do not match!");}
+                                         echo "Password dont match!"; exit;}
                                          }
       //Group Admin is setting wallet value for all group users
       if (isset($_POST["setWallet"]) && ($_SESSION["groupMaster"] == 1) ){
