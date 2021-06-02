@@ -10,7 +10,9 @@ if(isset($_SESSION["month"])){
   $monthChoosen = date('Y-m', strtotime("-31 days"));
 }
 $currentMonth = date('Y-m');
-$lastMonth = date('Y-m', strtotime("-31 days"));
+$lastMonth = date("Y-m",mktime(0,0,0,date("m", strtotime($currentMonth))-1,1,date("Y", strtotime($currentMonth))));
+
+
 
 
 

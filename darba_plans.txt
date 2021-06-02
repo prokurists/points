@@ -1,25 +1,9 @@
-Vizuāli
-    1. Ievietot krāsu paletes/background CHECK
-    2. Pielāgot izmērus datorā/telefonā CHECK
-    3. Pielāgot formas pie krāsu paletēm, lai nekas nekur nespīd cauri
-    4. Atstāt tikai kļūdas paziņojumus un tos integret formā.
-    5. Uztaisīt formu pievilcīgaku/caurspīdīgaku.
-
-    GROUP settings:
-    Grupas invite links
-    Grupas maka vērtība, kurš atjaunojās katru mēnesi
-
-
-
-Tehniski
-    1. Datubāze user_wallet pievienot email, wallet, gift
-    2. TOP users radas paģāšā(tagad esošais) mēneša rezultāti ar darbinieku sasniegumiem
-    3. Komentāri iesaldējās 29 datumā
-    4. 1 datumā tiek piešķirts jauns grozs.
-    5. 1 datumā ir iespēja apskatīties statistiku līdz 7 datumam
-
-Promotēt
-ONEPAGERI
-
-
-CV
+1. Automātiski piešķirās konkrēts grozs, konkrētajā datumā 
+2. REGISTRACIJA + javascript validation
+3. LOGINS + javascript validation
+4. GALVENE SELECT data (izejošie darījumi) + ar dzēst ar javascript
+5. PROFILS SELECT DATA onSELECT JAVASCRIPT
+6. lastMONTH fix - CHECK!!!
+7. Atjaunot paroli funkcija
+8. Nomainit paroli funkcija
+9. Sagatavot dokumentāciju, kad viss done
