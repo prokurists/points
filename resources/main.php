@@ -30,8 +30,10 @@ switch ($request) {
             header("Refresh: 0; URL=/");
         break;
 
-        case '/register' AND $regKey :
+        case '/register'.'/'.$regKey:
             require 'resources/pages/register.php';
+            echo $_SERVER['REQUEST_URI'];
+
             break;
 
         default :

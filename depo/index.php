@@ -1,10 +1,10 @@
 <?php 
 
-    if (isset($POST["data"])){
-		echo "DATA validation done";
-        
-    }
+    if (isset($_POST["data"])){
+		echo $_POST["email"];
+		exit;
 
+    };
 ?>
 
 <!DOCTYPE html>
@@ -51,8 +51,7 @@
     <label for="password_confirm">Retype password:</label>
     <input type="password" class="form-control" id="password_conf" placeholder="Enter password" name="pswd" required>
   </div>
-
-  <button type="submit" onclick="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 </form>
 
 	<script>
@@ -67,11 +66,9 @@
 				$.ajax({
 					type: "POST",
 					data: {	
-						data: validate,
 						email: email,
 						password: password,
 						password_conf: password_conf
-
 					},
 					cache: false,
 					success: function(data) {
