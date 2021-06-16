@@ -15,7 +15,7 @@ function toLoginPage (){
   header("Refresh: 0; URL=/login");
 
 }
-if ((date("d") == 01) AND (date("h:i") == '00:00')){
+if ((date("d") == 01) AND (date("h:i") == '00:04')){
   $xWallet = new Wallet();
   $xGroup = new Group();
 
