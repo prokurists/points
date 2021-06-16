@@ -11,12 +11,6 @@ if(isset($_SESSION["month"])){
 } else{
   $monthChoosen = $lastMonth;
 }
-
-
-
-
-
-
 function toLoginPage (){
   header("Refresh: 0; URL=/login");
 
@@ -70,10 +64,10 @@ if ((date("d") == 01) AND (date("h:i") == '00:00')){
             "status" => "alert-danger",
             "message" => "Email or password is WRONG!");
 
-      };
-    };  
+      }
+    }  
 
-      if (isset($_POST["registerJ"])){
+      if (isset($_POST["register"])){
 
           $xUser = new User();
           $xGroup = new Group();
@@ -117,11 +111,16 @@ if ((date("d") == 01) AND (date("h:i") == '00:00')){
 
               
                    //Push array with success message and redirect to /login page
-                    echo "Registration completed"; exit;
+                   header("Refresh: 2; URL=/login");
+                   $resMessage = array(
+                   "status" => "alert-success",
+                   "message" => "Registration sucessfull with new GROUP!");  
 
                       } else{
                          // Push alert message that group is taken!
-                        echo "Group name is taken!"; exit; }
+                        $resMessage = array(
+                        "status" => "alert-danger",
+                        "message" => "Group TAKEN!");}
 
                           //Anotherwise groupValue is set
                           } else {
@@ -140,20 +139,29 @@ if ((date("d") == 01) AND (date("h:i") == '00:00')){
 
 
                             //Push array with success message and redirect to /login page
-                            echo "Registration completed"; exit;            }
+                            header("Refresh: 2; URL=/login");
+                            $resMessage = array(
+                            "status" => "alert-success",
+                            "message" => "Registration successfull with existing GROUP!");            }
                             //No value for dbVlaue in DB
                                 else {
-                                  echo "Invalid invite link!"; exit; }}
+                                  $resMessage = array(
+                                  "status" => "alert-danger",
+                                  "message" => "Invalid invite link!"); }}
     
                                  } else {
 
                                    //Push alert message that email is taken!
-                                   echo "Email taken!"; die;}
+                                   $resMessage = array(
+                                   "status" => "alert-danger",
+                                   "message" => "Email taken!");}
     
                                       } else {
 
                                          //Push alert message that password do not match!
-                                         echo "Password dont match!"; exit;}
+                                         $resMessage = array(
+                                         "status" => "alert-danger",
+                                         "message" => "Password do not match!");}
                                          }
       //Group Admin is setting wallet value for all group users
       if (isset($_POST["setWallet"]) && ($_SESSION["groupMaster"] == 1) ){
