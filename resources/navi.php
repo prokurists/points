@@ -18,6 +18,9 @@
   <li class="nav-item">
         <a class="nav-link" href="/statistics">Statistics</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/history">History</a>
+      </li>
       <?php if(isset($_SESSION["groupMaster"])){?>
       <li class="nav-item">
         <a class="nav-link" href="/group_settings">Group settings</a>

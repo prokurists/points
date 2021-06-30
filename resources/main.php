@@ -17,9 +17,13 @@ switch ($request) {
         require 'resources/pages/transactions/transaction.php';
         break;
 
-    case '/profile' :
+    case '/history' :
         require  'resources/pages/transactions/transaction_history.php';
         break;
+
+        case '/profile' :
+            require  'resources/pages/profile.php';
+            break;
         
         case '/statistics' :
             require 'resources/pages/statistics.php';
