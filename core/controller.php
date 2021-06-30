@@ -261,7 +261,7 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
           $to = $email;
           $subject = "Password reset";
           $txt = "Your new password is: ".$password;
-          $headers = "From: webmaster@points.pavlovs.lv";
+          $headers = "From: points.pavlovs.lv";
           mail($to,$subject,$txt,$headers);
 
           $resMessage = array(
@@ -278,18 +278,40 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
         $resMessage = array(
           "status" => "alert-danger",
           "message" => "No email to reset!");}
-      
 
+        }
+
+  if (isset($_POST["update-pw"])){
+
+    $pwold = $_POST["oldpassword"];
+    $pwnew = $_POST["newpassword"];
+    $pwrepeat = $_POST["repeatpassword"];
+    $email = $_SESSION["email"];
+
+    $xUser = new User();    
+
+    if ($pwnew == $pwrepeat){
+      if ($xUser->checkLogin($email,$pwold)){
+        if ($xUser->setPassword($email, $pwnew)){
+
+          $resMessage = array(
+            "status" => "alert-success",
+            "message" => "New password set!");}
+
+      }else{
+        $resMessage = array(
+          "status" => "alert-danger",
+          "message" => "Wrong old password!");}
+
+    }else{
+
+      $resMessage = array(
+        "status" => "alert-danger",
+        "message" => "New password DO NOT match!");}
     
-
-
-
-
-
-    }
       
 
 
-
+      }
   
     ?>
