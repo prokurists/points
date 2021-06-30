@@ -208,5 +208,25 @@ $db->closeDB();
         $db->closeDB();
 
     }
+
+    public function setPassword($email, $password){
+    
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        $email = $this->test_input($email);
+        $hash = password_hash($password, 
+        PASSWORD_DEFAULT);
+        $sql = "UPDATE users SET password='".$hash."' WHERE email='".$email."'";
+
+        if ($connectQr->query($sql) === TRUE) {
+return true;
+        } else {
+return false;            }
+
+$db->close();
+    }
 }
+
+
 ?> 

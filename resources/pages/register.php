@@ -35,6 +35,8 @@ if ($regKey == "") {
 </div>
   <button type="submit" id="register" class="btn btn-dark" name="register">Register</button>
   <a href="/login" class="btn btn-dark">Have account ? Login</a>
+  <a class="btn btn-dark" href="/reset-password">Forgot password</a>
+
 
 </form>
 

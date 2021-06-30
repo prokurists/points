@@ -23,7 +23,7 @@
       </li>
       <?php if(isset($_SESSION["groupMaster"])){?>
       <li class="nav-item">
-        <a class="nav-link" href="/group_settings">Group settings</a>
+        <a class="nav-link" href="/group-settings">Group settings</a>
       </li>
         <?php } ?>
     </ul>

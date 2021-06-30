@@ -242,6 +242,51 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
         $_SESSION["month"] = $_POST["monthChoosen"];
         header("Refresh:0; URL=/profile");}
       }
+
+    if(isset($_POST["reset-pw"])){
+      $xUser = new User();
+      $email = $_POST["email-reset"];
+
+
+      $emailExist = $xUser->checkEmailAvailability($email);
+
+      
+      $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*_"; // Generating Password
+      $password = substr( str_shuffle( $chars ), 0, 8 );
+
+
+      if (!$emailExist){
+
+        if ($xUser->setPassword($email, $password)){
+          $to = $email;
+          $subject = "Password reset";
+          $txt = "Your new password is: ".$password;
+          $headers = "From: webmaster@points.pavlovs.lv";
+          mail($to,$subject,$txt,$headers);
+
+          $resMessage = array(
+            "status" => "alert-success",
+            "message" => "Your new password sent to email!");
+        } else {
+          $resMessage = array(
+            "status" => "alert-danger",
+            "message" => "wrong credentials!");
+        }
+
+
+      } else {
+        $resMessage = array(
+          "status" => "alert-danger",
+          "message" => "No email to reset!");}
+      
+
+    
+
+
+
+
+
+    }
       
 
 

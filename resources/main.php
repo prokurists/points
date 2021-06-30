@@ -9,7 +9,7 @@ switch ($request) {
         require  'resources/pages/login.php';
         break;
 
-    case '/group_settings' :
+    case '/group-settings' :
         require 'resources/pages/group.php';
         break;
 
@@ -38,6 +38,10 @@ switch ($request) {
             require 'resources/pages/register.php';
             break;
 
+
+        case '/reset-password':
+            require 'resources/pages/resetpw.php';
+            break;
         default :
             require  'resources/pages/404.php';
             break;
