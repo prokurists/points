@@ -15,8 +15,7 @@ function toLoginPage (){
   header("Refresh: 0; URL=/login");
 
 }
-if ($_SERVER['SERVER_ADDR'] == '91.194.77.152'){
-if (date("d") == 01){
+if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
   $xWallet = new Wallet();
   $xGroup = new Group();
 
@@ -25,7 +24,7 @@ if (date("d") == 01){
   for ($row = 0; $row < count($groupWalletValue); $row++) {
     $xWallet->setGroupWallet($groupWalletValue[$row][0], $groupWalletValue[$row][1]);
       }
-}
+
 }
 
   if (isset($_POST["login"])){
