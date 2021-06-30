@@ -15,7 +15,8 @@ function toLoginPage (){
   header("Refresh: 0; URL=/login");
 
 }
-if ((date("d") == 01) AND (date("h:i") == '00:04')){
+if ($_SERVER['SERVER_ADDR'] == '91.194.77.152'){
+if (date("d") == 01){
   $xWallet = new Wallet();
   $xGroup = new Group();
 
@@ -25,7 +26,7 @@ if ((date("d") == 01) AND (date("h:i") == '00:04')){
     $xWallet->setGroupWallet($groupWalletValue[$row][0], $groupWalletValue[$row][1]);
       }
 }
-
+}
 
   if (isset($_POST["login"])){
 
