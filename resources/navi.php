@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="/">POINTS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,13 +28,13 @@
         <?php } ?>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    <a class="nav-link" href="/profile"><i class="fa fa-user" style="font-size:20px; color:green; padding-left:2px;"></i></a>
+ 
 
-    <span class="badge badge-light">Hello, 
+    <span class="badge">Hello, <a class="nav-link" href="/profile">
     <?php
     $xUser = new User();
 
-    echo $xUser->getUserName($_SESSION["email"]); ?> </span><br>
+    echo $xUser->getUserName($_SESSION["email"]); ?> </span><br></a>
     <a class="nav-link" href="/logout"><i class="fa fa-sign-out" style="font-size:20px; color:red; padding-left:2px;"></i></a>
 
 <?php }?>

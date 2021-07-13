@@ -1,5 +1,6 @@
 <?php 
 if(isset($_SESSION['loggedIn'])){
+
 require __DIR__."/transactions.php";
 ?>
 

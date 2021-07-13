@@ -213,17 +213,16 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
         $xTransaction = new Transaction();
         $transactionID = $_POST["deleteTransactionID"];
 
-        $xTransaction->deleteTransaction($transactionID);
-
         $transactionAmount = $_POST["transactionAmount"];
         $emailFrom = $_SESSION["email"];
         $emailTo = $_POST["emailTo"];
 
         $xWallet = new Wallet();
 
-        
-        $xWallet->setUsersWalletGift($emailFrom, $emailTo, $transactionAmount);
+        if($xTransaction->deleteTransaction($transactionID)){
 
+        $xWallet->setUsersWalletGift($emailFrom, $emailTo, $transactionAmount);
+        }
       }
       
       if (isset($_SESSION["groupMaster"]) && (isset($_POST["showGroupResults"]))){
@@ -240,7 +239,7 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
             "message" => "You cant look current month transactions!");
                   } else {
         $_SESSION["month"] = $_POST["monthChoosen"];
-        header("Refresh:0; URL=/profile");}
+        header("Refresh:0; URL=/history");}
       }
 
     if(isset($_POST["reset-pw"])){
@@ -277,7 +276,7 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
       } else {
         $resMessage = array(
           "status" => "alert-danger",
-          "message" => "No email to reset!");}
+          "message" => "Wrong e-mail!");}
 
         }
 

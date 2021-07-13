@@ -1,5 +1,5 @@
-<div class="card w80">
-<div class="card-body">
+<div class="card no-border">
+<img class="login-logo" src="/resources/style/images/lg.png"></img>
 <?php require  'resources/errorMsg.php'; ?>
 
 <form method="POST">
@@ -34,10 +34,5 @@ if ($regKey == "") {
 ?>
 </div>
   <button type="submit" id="register" class="btn btn-dark" name="register">Register</button>
-  <a href="/login" class="btn btn-dark">Have account ? Login</a>
-  <a class="btn btn-dark" href="/reset-password">Forgot password</a>
-
-
+  </div>
 </form>
-
-</div></div>

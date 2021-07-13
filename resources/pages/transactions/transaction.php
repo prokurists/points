@@ -1,4 +1,3 @@
-<div class="container w80">
 
 <?php  
 //Allow to see content only if you are logged in
@@ -15,7 +14,7 @@ if (isset($_SESSION["email"])){
     
     
 ?>
-<div class="card opa05">
+<div class="card">
 <div class="card-body">
 <form action="<?php $request; ?>" method="POST">
 <div class="form-row">
@@ -41,7 +40,6 @@ if (isset($_SESSION["email"])){
 
   </form>
 </div>
-  </div>
 <?php 
 } else {
   toLoginPage();

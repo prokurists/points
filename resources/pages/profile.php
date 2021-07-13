@@ -1,6 +1,7 @@
-<div class="card w80">
-<div class="card-body">
+<div class="card no-border">
+<img class="login-logo" src="/resources/style/images/lg.png"></img>
 <?php require  'resources/errorMsg.php'; ?>
+
 
 <form method="POST">
   <div class="form-group">
@@ -20,4 +21,4 @@
 </form>
 
 
-</div></div>
+</div>

@@ -1,5 +1,5 @@
-<div class="card w80">
-<div class="card-body">
-<h1>404 ERROR</h1>
-<p>PAGE NOT FOUND</p>
-</div></div>
+<div class="card no-border">
+<img class="login-logo" src="/resources/style/images/lg.png"></img>
+
+<h1 style="text-align:center;">404 ERROR</h1>
+</div>

@@ -1,15 +1,10 @@
 <br>
 
 <?php
-$xTotalSum = $xTransaction->getTotalValue($_SESSION["email"], $monthChoosen);
-if ($xTotalSum){
-  $totalSumText = "<div class='card'><div class='card-body'>Congratulations! You have received " . $xTotalSum. " POINTS in ".date("F", strtotime($monthChoosen))."!</div></div><br>";
-} 
 
 
 
 if (!EMPTY($transactionFrom)){
-echo $totalSumText;
 for ($row = 0; $row < $transactionFromRow; $row++) {
   echo "<div class='card'>
   <div class='card-body'>

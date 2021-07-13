@@ -1,5 +1,3 @@
-<div class="container w80">
-
 <?php
 
   $users = new User();
@@ -7,9 +5,9 @@
 
   $transactions = new Transaction();
 
-  echo "<div class='card p-3 mb-3 text-center'>";
+  echo "<div class='p-3 mb-3 text-center'>";
   echo "<h2> ".date("F", strtotime($lastMonth))." results</h2></div>";
- 
+
 
   for ($row = 0; $row < count($usersList); $row++) {
       $points = 0;

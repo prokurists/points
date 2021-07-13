@@ -12,13 +12,12 @@ if (isset($_SESSION["email"])){
 
 ?>
 
+<?php require  'resources/errorMsg.php'; ?>
 
 <?php require __DIR__. "/transactions/transaction.php"; ?>
-<div class="container w80">
 
 <?php require __DIR__."/transactions/transactions_made.php"; ?>
 <br>
 
 
 <?php }else{ toLoginPage();} ?>
-</div>

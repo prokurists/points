@@ -1,7 +1,6 @@
 <br>
 
 <?php
-$showResults = 0;
 if ($transactionToCounter < 3){
   $transactionToRow = $transactionToCounter;
 }
@@ -20,7 +19,6 @@ for ($row = 0; $row < $transactionToRow; $row++) {
   <div class='col-sm align-self-center'><b>Comment:</b> ".$transactionTo[$row][0]."</div><div class='col-sm-2 align-self-end'>
   ";
 
-  if (!$showResults){
   echo  "<form action='/' method='POST'>
   <input type='hidden' name='deleteTransactionID' value='".$transactionTo[$row][4]."'>
   <input type='hidden' name='transactionAmount' value='".$transactionTo[$row][1]."'>
@@ -28,7 +26,7 @@ for ($row = 0; $row < $transactionToRow; $row++) {
   <button type='submit' class='ml-2 mb-1 close ' name='deleteTransaction' aria-label='Close'>
   <span aria-hidden='true'>&times;</span>
   </button></form>";
-  }
+  
   echo "
   </div></div></div></div><br>";
 }

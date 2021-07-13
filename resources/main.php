@@ -1,3 +1,5 @@
+<div class="container">
+
 <?php
 
 switch ($request) {
@@ -48,3 +50,5 @@ switch ($request) {
 }
 
 ?>
+
+</div>
