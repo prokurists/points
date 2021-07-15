@@ -40,3 +40,8 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 
 }
+
+.list-group-item {
+  background-color: transparent;
+
+  }
