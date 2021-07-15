@@ -169,7 +169,10 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
 
         $quantity = $_POST["quantity"];
         $groupName = $_SESSION["adminGroupName"];
-        $xWallet->setWallet($quantity, $_SESSION["adminGroupName"]); }
+        $xWallet->setWallet($quantity, $_SESSION["adminGroupName"]); 
+        echo '<script language="javascript">window.location.href=""</script>';              
+
+      }
       
       //If you are logged you are adding new transaction
       if(isset($_POST["new_transaction"]) && ($_SESSION["loggedIn"] == 1)){
@@ -186,6 +189,8 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
         if ($xWallet->checkUsersBallance($emailFrom)){
           $newTransaction->createNewTransaction($emailFrom, $emailTo, $transaction, $value, $_SESSION["groupName"]);
           $xWallet->addUsersWalletGift($emailFrom,$emailTo, $value);
+          echo '<script language="javascript">window.location.href=""</script>';              
+
         } else {
           $resMessage = array(
             "status" => "alert-danger",
@@ -194,20 +199,6 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
 
 
     }
-      //Group Admin is reseting Wallet value
-      if (isset($_POST["resetWallet"]) && ($_SESSION["groupMaster"] == 1) ){
-        $xuser = new User();
-        $xuser->resetWallet($_SESSION["adminGroupName"]);    }
-      
-      //Group admin is resseting Gift Value
-      if (isset($_POST["resetGift"]) && ($_SESSION["groupMaster"] == 1) ){
-        $xuser = new User();
-        $xuser->resetGift($_SESSION["adminGroupName"]);   }
-
-      //Group admin is resseting Gift Value
-      if (isset($_POST["resetTransaction"]) && ($_SESSION["groupMaster"] == 1) ){
-        $xTransaction = new Transaction();
-        $xTransaction->resetTransaction($_SESSION["adminGroupName"]);   }
 
       if (isset($_POST["deleteTransaction"]) && (isset($_SESSION["email"]))){
         $xTransaction = new Transaction();
@@ -222,15 +213,11 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
         if($xTransaction->deleteTransaction($transactionID)){
 
         $xWallet->setUsersWalletGift($emailFrom, $emailTo, $transactionAmount);
-        }
-      }
-      
-      if (isset($_SESSION["groupMaster"]) && (isset($_POST["showGroupResults"]))){
-        $GroupResults = new Group();
-        $GroupResults->setGroupResults($_SESSION["email"]);
         
+        } echo '<script language="javascript">window.location.href=""</script>';              
 
       }
+    
 
       if(isset($_SESSION["email"]) && (isset($_POST["setMonth"]))){
         if (trim($_POST["monthChoosen"]) === (trim($currentMonth))){
@@ -239,7 +226,8 @@ if ($_SERVER['REMOTE_ADDR'] == "91.194.77.152"){
             "message" => "You cant look current month transactions!");
                   } else {
         $_SESSION["month"] = $_POST["monthChoosen"];
-        header("Refresh:0; URL=/history");}
+        echo '<script language="javascript">window.location.href=""</script>';              
+}
       }
 
     if(isset($_POST["reset-pw"])){

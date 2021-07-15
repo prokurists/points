@@ -8,11 +8,12 @@
   echo "<div class='p-3 mb-3 text-center'>";
   echo "<h2> ".date("F", strtotime($lastMonth))." results</h2></div>";
 
-
+    if($transactions->checkTransactionAvailability($lastMonth, $_SESSION["groupName"])){
   for ($row = 0; $row < count($usersList); $row++) {
       $points = 0;
       $transactionUsersList = $transactions->getTopUserTransactions($usersList[$row], $lastMonth);
       $transactionTotalPoints = $transactions->getTotalPoints($usersList[$row], $lastMonth);
+
       
       if ($transactionTotalPoints > 0){
       echo "
@@ -26,11 +27,22 @@
       }
       echo "</ul></div></div></div><br>";
 
+    } else {
+
     }
 
 
 
   }
+} else {
+  echo "<div class='card'>
+
+  <div class='card-body'>
+      <p>Unfortunately, there are no ratings at ".date("F", strtotime($lastMonth))."</p>
+  </div>
+</div>";
+
+}
 
 
 

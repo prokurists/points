@@ -137,6 +137,20 @@ class Transaction{
         }
     }
 
+    public function checkTransactionAvailability($lastMonth, $groupName){
+        $db = new dbConnect();
+        $connectQr = $db->connectDB();
+
+        $sql = "SELECT * FROM user_transactions WHERE user_group = '".$groupName."' AND DATE_FORMAT(created_date, '%Y-%m') = '".$lastMonth."'";
+        $result = $connectQr->query($sql);
+
+            if($result->num_rows > 0){
+                return true;
+            } else {
+                return false;
+            }
+    }
+
     public function getTotalValue($email, $monthChoosen){ 
         $db = new dbConnect();
         $connectQr = $db->connectDB();

@@ -50,7 +50,7 @@ for ($row = 3; $row < $transactionToCounter; $row++) {
   <input type='hidden' name='deleteTransactionID' value='".$transactionTo[$row][4]."'>
   <input type='hidden' name='transactionAmount' value='".$transactionTo[$row][1]."'>
   <input type='hidden' name='emailTo' value='".$transactionTo[$row][3]."'>
-  <button type='submit' class='ml-2 mb-1 close ' name='deleteTransaction' aria-label='Close'>
+  <button type='submit' class='ml-2 mb-1 close ' name='deleteTransaction' onClick='setTimeout('clearform()', 1500 );' aria-label='Close'>
   <span aria-hidden='true'>&times;</span>
   </button></form>";
   }
