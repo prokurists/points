@@ -14,6 +14,8 @@ if (isset($_SESSION["email"])){
 
 <?php require  'resources/errorMsg.php'; ?>
 
+
+
 <?php require __DIR__. "/transactions/transaction.php"; ?>
 
 <?php require __DIR__."/transactions/transactions_made.php"; ?>
