@@ -28,7 +28,7 @@ if (isset($_SESSION["email"])){
     </div>
     <div class="form-group col-md-6">
     <label for="transactions">Leave comment: </label>
-      <textarea class="form-control" rows="1" maxlength="200" name="transaction" required></textarea>
+      <textarea class="form-control" rows="1" maxlength="200" name="transaction" id="transactions" required></textarea>
     </div>
 
     <div class="form-group col-md-2">
