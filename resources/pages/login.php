@@ -13,7 +13,7 @@
     <input 
     type="text" 
     class="form-control" 
-    id="form_eimail" 
+    id="form_email" 
     placeholder="Enter email" 
     name="email" required/>
 
